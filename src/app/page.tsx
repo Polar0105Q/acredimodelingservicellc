@@ -15,49 +15,44 @@ import CTASection from './components/CTASection';
 import ContactSection from './components/ContactSection';
 
 export default function HomePage() {
-    const [lang, setLang] = useState<'en' | 'es'>('en');
-    const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [lang, setLang] = useState<'en' | 'es'>('en');
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
-    useEffect(() => {
-        const root = document.documentElement;
-        if (theme === 'dark') {
-            root.classList?.add('dark');
-        } else {
-            root.classList?.remove('dark');
-        }
-    }, [theme]);
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList?.add('dark');
+    } else {
+      root.classList?.remove('dark');
+    }
+  }, [theme]);
 
-    return (
-        <div className="min-h-screen bg-background text-foreground">
-            {/* Global vertical grid lines */}
-            <div className="grid-lines">
-                <div className="grid-line" />
-                <div className="grid-line hidden md:block" />
-                <div className="grid-line hidden md:block" />
-                <div className="grid-line" />
-            </div>
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Global vertical grid lines */}
+      <div className="grid-lines">
+        <div className="grid-line" />
+        <div className="grid-line hidden md:block" />
+        <div className="grid-line hidden md:block" />
+        <div className="grid-line" />
+      </div>
 
-            <Header
-                lang={lang}
-                theme={theme}
-                onLangChange={setLang}
-                onThemeChange={setTheme}
-            />
+      <Header lang={lang} theme={theme} onLangChange={setLang} onThemeChange={setTheme} />
 
-            <main>
-                <HeroSection lang={lang} />
-                <TrustStats lang={lang} />
-                <ServicesSection lang={lang} />
-                <PortfolioSection lang={lang} />
-                <WhyUsSection lang={lang} />
-                <ProcessSection lang={lang} />
-                <TestimonialsSection lang={lang} />
-                <LocationsSection lang={lang} />
-                <CTASection lang={lang} />
-                <ContactSection lang={lang} />
-            </main>
+      <main>
+        <HeroSection lang={lang} />
+        <TrustStats lang={lang} />
+        <ServicesSection lang={lang} />
+        <PortfolioSection lang={lang} />
+        <WhyUsSection lang={lang} />
+        <ProcessSection lang={lang} />
+        <TestimonialsSection lang={lang} />
+        <LocationsSection lang={lang} />
+        <CTASection lang={lang} />
+        <ContactSection lang={lang} />
+      </main>
 
-            <Footer lang={lang} />
-        </div>
-    );
+      <Footer lang={lang} />
+    </div>
+  );
 }
