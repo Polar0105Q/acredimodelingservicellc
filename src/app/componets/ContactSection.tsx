@@ -1,0 +1,234 @@
+'use client';
+
+import React, { useState, useRef, useEffect } from 'react';
+import Icon from '@/components/ui/AppIcon';
+
+interface ContactSectionProps {
+    lang: 'en' | 'es';
+}
+
+const t = {
+    en: {
+        label: 'Get In Touch',
+        heading: 'Start Your Project',
+        sub: 'Fill out the form below and we\'ll get back to you within 24 hours with a personalized consultation.',
+        fields: {
+            name: 'Full Name',
+            email: 'Email Address',
+            phone: 'Phone Number',
+            service: 'Service Needed',
+            message: 'Tell us about your project...',
+            submit: 'Send Message',
+        },
+        services: ['Kitchen Remodeling', 'Bathroom Remodeling', 'Home Renovation', 'Commercial Remodeling', 'Flooring Installation', 'Interior Design', 'Other'],
+        success: 'Message sent! We\'ll contact you within 24 hours.',
+        info: {
+            phone: '(305) 555-0192',
+            email: 'info@remodelingservicellc.com',
+            address: '1200 Brickell Ave, Suite 400\nMiami, FL 33131',
+            hours: 'Mon–Fri: 8AM–6PM · Sat: 9AM–3PM',
+        },
+    },
+    es: {
+        label: 'Contáctanos',
+        heading: 'Inicia Tu Proyecto',
+        sub: 'Completa el formulario y te contactaremos dentro de 24 horas con una consulta personalizada.',
+        fields: {
+            name: 'Nombre Completo',
+            email: 'Correo Electrónico',
+            phone: 'Número de Teléfono',
+            service: 'Servicio Requerido',
+            message: 'Cuéntanos sobre tu proyecto...',
+            submit: 'Enviar Mensaje',
+        },
+        services: ['Remodelación de Cocinas', 'Remodelación de Baños', 'Renovación de Hogar', 'Remodelación Comercial', 'Instalación de Pisos', 'Diseño de Interiores', 'Otro'],
+        success: '¡Mensaje enviado! Te contactaremos dentro de 24 horas.',
+        info: {
+            phone: '(305) 555-0192',
+            email: 'info@remodelingservicellc.com',
+            address: '1200 Brickell Ave, Suite 400\nMiami, FL 33131',
+            hours: 'Lun–Vie: 8AM–6PM · Sáb: 9AM–3PM',
+        },
+    },
+};
+
+export default function ContactSection({ lang }: ContactSectionProps) {
+    const tx = t[lang];
+    const sectionRef = useRef<HTMLElement>(null);
+    const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' });
+    const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.querySelectorAll<HTMLElement>('.reveal').forEach((el, i) => {
+                            setTimeout(() => { el.classList.add('animate-in-scroll'); }, i * 80);
+                        });
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+        if (sectionRef.current) observer.observe(sectionRef.current);
+        return () => observer.disconnect();
+    }, []);
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+            setSubmitted(true);
+        }, 1500);
+    };
+
+    return (
+        <section id="contact" ref={sectionRef} className="py-24 md:py-32 bg-secondary relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 blob-primary animate-blob pointer-events-none opacity-20" />
+
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+                <div className="text-center mb-16 reveal">
+                    <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">{tx.label}</span>
+                    <h2 className="text-section font-display font-bold text-foreground mb-4">{tx.heading}</h2>
+                    <p className="text-lg text-muted-foreground max-w-xl mx-auto">{tx.sub}</p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    {/* Contact info */}
+                    <div className="flex flex-col gap-5 reveal">
+                        {[
+                            { icon: 'PhoneIcon', label: 'Phone', value: tx.info.phone, href: `tel:${tx.info.phone}` },
+                            { icon: 'EnvelopeIcon', label: 'Email', value: tx.info.email, href: `mailto:${tx.info.email}` },
+                            { icon: 'MapPinIcon', label: 'Address', value: tx.info.address, href: '#' },
+                            { icon: 'ClockIcon', label: 'Hours', value: tx.info.hours, href: '#' },
+                        ].map((item, i) => (
+                            <a
+                                key={item.label}
+                                href={item.href}
+                                className="flex items-start gap-4 p-5 bg-card border border-border rounded-2xl hover:border-primary/30 hover:shadow-lg transition-all duration-300 group reveal"
+                                style={{ transitionDelay: `${i * 80}ms` }}
+                            >
+                                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-all duration-300">
+                                    <Icon
+                                        name={item.icon as 'PhoneIcon'}
+                                        size={20}
+                                        variant="outline"
+                                        className="text-primary group-hover:text-primary-foreground transition-colors duration-300"
+                                    />
+                                </div>
+                                <div>
+                                    <span className="block text-xs uppercase tracking-wider text-muted-foreground mb-1">{item.label}</span>
+                                    <span className="block text-sm font-medium text-foreground leading-relaxed whitespace-pre-line">{item.value}</span>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+
+                    {/* Form */}
+                    <div className="lg:col-span-2 reveal">
+                        {submitted ? (
+                            <div className="bg-card border border-border rounded-3xl p-12 flex flex-col items-center justify-center text-center min-h-[400px]">
+                                <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mb-6">
+                                    <Icon name="CheckCircleIcon" size={32} variant="outline" className="text-green-500" />
+                                </div>
+                                <h3 className="text-xl font-display font-bold text-foreground mb-3">{tx.success}</h3>
+                                <button
+                                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', service: '', message: '' }); }}
+                                    className="mt-4 text-sm text-primary hover:underline"
+                                >
+                                    {lang === 'en' ? 'Send another message' : 'Enviar otro mensaje'}
+                                </button>
+                            </div>
+                        ) : (
+                            <form
+                                onSubmit={handleSubmit}
+                                className="bg-card border border-border rounded-3xl p-8 md:p-10 space-y-5"
+                            >
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    {/* Name */}
+                                    <div className="floating-label-group">
+                                        <input
+                                            type="text"
+                                            placeholder=" "
+                                            value={form.name}
+                                            onChange={(e) => setForm({ ...form, name: e.target.value })}
+                                            required
+                                        />
+                                        <label>{tx.fields.name}</label>
+                                    </div>
+                                    {/* Email */}
+                                    <div className="floating-label-group">
+                                        <input
+                                            type="email"
+                                            placeholder=" "
+                                            value={form.email}
+                                            onChange={(e) => setForm({ ...form, email: e.target.value })}
+                                            required
+                                        />
+                                        <label>{tx.fields.email}</label>
+                                    </div>
+                                    {/* Phone */}
+                                    <div className="floating-label-group">
+                                        <input
+                                            type="tel"
+                                            placeholder=" "
+                                            value={form.phone}
+                                            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                                        />
+                                        <label>{tx.fields.phone}</label>
+                                    </div>
+                                    {/* Service */}
+                                    <div className="floating-label-group">
+                                        <select
+                                            value={form.service}
+                                            onChange={(e) => setForm({ ...form, service: e.target.value })}
+                                        >
+                                            <option value=""></option>
+                                            {tx.services.map((s) => (
+                                                <option key={s} value={s}>{s}</option>
+                                            ))}
+                                        </select>
+                                        <label>{tx.fields.service}</label>
+                                    </div>
+                                </div>
+
+                                {/* Message */}
+                                <div className="floating-label-group">
+                                    <textarea
+                                        rows={5}
+                                        placeholder=" "
+                                        value={form.message}
+                                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                                        style={{ paddingTop: '1.5rem', paddingBottom: '0.75rem' }}
+                                    />
+                                    <label>{tx.fields.message}</label>
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    disabled={loading}
+                                    className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground rounded-xl font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/25 disabled:opacity-70"
+                                >
+                                    {loading ? (
+                                        <>
+                                            <div className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                                            {lang === 'en' ? 'Sending...' : 'Enviando...'}
+                                        </>
+                                    ) : (
+                                        <>
+                                            {tx.fields.submit}
+                                            <Icon name="PaperAirplaneIcon" size={18} variant="outline" />
+                                        </>
+                                    )}
+                                </button>
+                            </form>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
