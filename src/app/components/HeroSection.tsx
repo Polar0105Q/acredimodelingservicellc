@@ -112,9 +112,9 @@ export default function HeroSection({ lang }: HeroSectionProps) {
       </div>
 
       {/* Main content grid */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
         {/* Left: Headline */}
-        <div className="md:col-span-7">
+        <div className="lg:col-span-7">
           {/* Badge */}
           <div
             className="flex items-center gap-3 mb-6 animate-slide-up opacity-0"
@@ -144,10 +144,10 @@ export default function HeroSection({ lang }: HeroSectionProps) {
 
         {/* Right: Glassmorphism card */}
         <div
-          className="md:col-span-5 animate-slide-up opacity-0"
+          className="max-w-xl lg:max-w-none lg:col-span-5 animate-slide-up opacity-0"
           style={{ animationDelay: '1.6s', animationFillMode: 'forwards' }}
         >
-          <div className="relative overflow-hidden glass-card rounded-3xl p-8 shadow-2xl">
+          <div className="relative overflow-hidden glass-card rounded-3xl p-6 md:p-8 shadow-2xl">
             {/* Shimmer */}
             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none animate-shimmer z-0" />
 

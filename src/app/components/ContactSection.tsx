@@ -31,6 +31,7 @@ const t = {
     ],
     success: "Message sent! We'll contact you within 24 hours.",
     error: 'Please complete the required fields before sending.',
+    submitError: 'We could not send your message right now. Please call or email us directly.',
     info: {
       phone: '(305) 555-0192',
       email: 'info@remodelingservicellc.com',
@@ -61,6 +62,8 @@ const t = {
     ],
     success: '¡Mensaje enviado! Te contactaremos dentro de 24 horas.',
     error: 'Completa los campos requeridos antes de enviar.',
+    submitError:
+      'No pudimos enviar tu mensaje en este momento. Llámanos o escríbenos directamente.',
     info: {
       phone: '(305) 555-0192',
       email: 'info@remodelingservicellc.com',
@@ -97,7 +100,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.service || !form.message.trim()) {
       setError(tx.error);
@@ -105,10 +108,21 @@ export default function ContactSection({ lang }: ContactSectionProps) {
     }
     setError('');
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!response.ok) {
+        throw new Error('Contact request failed');
+      }
       setSubmitted(true);
-    }, 1500);
+    } catch {
+      setError(tx.submitError);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -144,12 +158,16 @@ export default function ContactSection({ lang }: ContactSectionProps) {
                 value: tx.info.email,
                 href: `mailto:${tx.info.email}`,
               },
-              { icon: 'MapPinIcon', label: 'Address', value: tx.info.address, href: '#' },
-              { icon: 'ClockIcon', label: 'Hours', value: tx.info.hours, href: '#' },
+              {
+                icon: 'MapPinIcon',
+                label: 'Address',
+                value: tx.info.address,
+                href: 'https://www.google.com/maps/search/?api=1&query=1200%20Brickell%20Ave%20Suite%20400%20Miami%20FL%2033131',
+              },
+              { icon: 'ClockIcon', label: 'Hours', value: tx.info.hours },
             ].map((item, i) => (
-              <a
+              <div
                 key={item.label}
-                href={item.href}
                 className="flex items-start gap-4 p-5 bg-card border border-border rounded-2xl hover:border-primary/30 hover:shadow-lg transition-all duration-300 group reveal"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
@@ -166,10 +184,16 @@ export default function ContactSection({ lang }: ContactSectionProps) {
                     {item.label}
                   </span>
                   <span className="block text-sm font-medium text-foreground leading-relaxed whitespace-pre-line">
-                    {item.value}
+                    {'href' in item && item.href ? (
+                      <a href={item.href} className="hover:text-primary transition-colors">
+                        {item.value}
+                      </a>
+                    ) : (
+                      item.value
+                    )}
                   </span>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
 

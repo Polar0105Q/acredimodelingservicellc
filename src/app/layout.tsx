@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   icons: {
-    icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
   },
   openGraph: {
     title: 'Remodeling Service LLC - Premium Remodeling',
     description:
       'Premium remodeling for homes and businesses. Licensed professionals, transparent pricing.',
-    images: [{ url: '/assets/images/app_logo.png', width: 1200, height: 630 }],
+    images: [{ url: '/assets/images/app_logo.svg', width: 128, height: 128 }],
     type: 'website',
   },
 };

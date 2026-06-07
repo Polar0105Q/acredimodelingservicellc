@@ -64,16 +64,15 @@ export default function Footer({ lang }: FooterProps) {
               </span>
             </div>
             <p className="text-sm text-background/50 leading-relaxed max-w-xs mb-6">{tx.tagline}</p>
-            <div className="flex gap-3">
+            <div className="flex gap-3" aria-label="Social profiles coming soon">
               {(['instagram', 'facebook', 'twitter-x', 'youtube'] as const).map((social) => (
-                <a
+                <span
                   key={social}
-                  href="#"
                   className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-background/50 hover:text-background hover:bg-white/10 transition-all duration-200"
                   aria-label={social}
                 >
                   <Icon name="GlobeAltIcon" size={16} variant="outline" />
-                </a>
+                </span>
               ))}
             </div>
           </div>
@@ -169,13 +168,13 @@ export default function Footer({ lang }: FooterProps) {
           <p className="text-xs text-background/30">{tx.copyright}</p>
           <div className="flex gap-6">
             <a
-              href="#"
+              href="/privacy"
               className="text-xs text-background/40 hover:text-background transition-colors font-medium"
             >
               {tx.privacy}
             </a>
             <a
-              href="#"
+              href="/terms"
               className="text-xs text-background/40 hover:text-background transition-colors font-medium"
             >
               {tx.terms}

@@ -127,7 +127,7 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
       {/* Decorative large text */}
       <div
         className="absolute top-8 right-6 md:right-12 pointer-events-none select-none font-display font-bold text-background/5 leading-none"
-        style={{ fontSize: 'clamp(5rem, 12vw, 12rem)' }}
+        style={{ fontSize: 'clamp(3rem, 7.5vw, 7.5rem)' }}
       >
         PROCESS
       </div>
