@@ -115,19 +115,17 @@
   @keyframes animationIn {
     0% {
       opacity: 0;
-      transform: translateY(30px);
-      filter: blur(8px);
+      transform: translateY(18px);
     }
 
     100% {
       opacity: 1;
       transform: translateY(0);
-      filter: blur(0px);
     }
   }
 
   .animate-in-scroll {
-    animation: animationIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: animationIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   /* Shimmer sweep */
@@ -448,7 +446,7 @@
     opacity: 0.3;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     .animate-cinematic,
     .animate-blob,
     .animate-shimmer {
@@ -462,18 +460,20 @@
     }
 
     .animate-slide-up {
-      animation-duration: 0.45s;
+      animation: none;
+      opacity: 1 !important;
+      transform: none !important;
     }
 
     .reveal {
-      opacity: 1;
+      opacity: 1 !important;
+      transform: none !important;
     }
 
     .animate-in-scroll {
       animation: none;
-      opacity: 1;
-      transform: none;
-      filter: none;
+      opacity: 1 !important;
+      transform: none !important;
     }
 
     .service-card:hover,

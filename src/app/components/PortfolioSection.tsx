@@ -17,6 +17,8 @@ const t = {
     filters: ['All', 'Carpentry', 'Painting', 'Kitchen', 'Bathroom', 'Exterior'],
     before: 'Before',
     after: 'After',
+    compareHint: 'Hover or tap to see after',
+    compareAction: 'See after',
     viewAll: 'Start Your Project',
     homeLabel: 'Featured Home Project',
     homeHeading: 'Wood Interior Home Refresh',
@@ -30,6 +32,8 @@ const t = {
     filters: ['Todo', 'Carpinteria', 'Pintura', 'Cocina', 'Bano', 'Exterior'],
     before: 'Antes',
     after: 'Despues',
+    compareHint: 'Pasa el cursor o toca para ver el despues',
+    compareAction: 'Ver despues',
     viewAll: 'Iniciar Proyecto',
     homeLabel: 'Proyecto Casa',
     homeHeading: 'Renovacion Interior en Madera',
@@ -246,6 +250,10 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
             return (
               <div
                 key={project.id}
+                role="button"
+                tabIndex={0}
+                aria-label={`${project.title}: ${tx.compareHint}`}
+                aria-pressed={showAfter}
                 className={`portfolio-card group relative rounded-3xl overflow-hidden bg-card border border-border cursor-pointer ${
                   isFeatured
                     ? 'min-h-[360px] lg:min-h-[480px] lg:col-span-2 lg:row-span-2'
@@ -257,6 +265,12 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                 onClick={() =>
                   setActiveCompareId((current) => (current === project.id ? null : project.id))
                 }
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setActiveCompareId((current) => (current === project.id ? null : project.id));
+                  }
+                }}
               >
                 <div className="absolute inset-0 w-full h-full">
                   <Image
@@ -300,6 +314,19 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent pointer-events-none" />
                 </div>
 
+                <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 z-10 flex justify-center pointer-events-none">
+                  <span
+                    className={`inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/55 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-xl backdrop-blur-md transition-all duration-300 ${
+                      showAfter
+                        ? 'translate-y-2 opacity-0'
+                        : 'opacity-100 md:opacity-0 md:group-hover:opacity-100'
+                    }`}
+                  >
+                    {tx.compareAction}
+                    <Icon name="ArrowRightIcon" size={14} variant="outline" />
+                  </span>
+                </div>
+
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <span className="text-xs uppercase tracking-widest text-accent font-semibold">
                     {project.category}
@@ -311,6 +338,9 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                     <Icon name="TagIcon" size={12} variant="outline" />
                     <span>{project.detail}</span>
                   </div>
+                  <p className="mt-3 text-[0.68rem] font-semibold uppercase tracking-wider text-white/55">
+                    {tx.compareHint}
+                  </p>
                 </div>
               </div>
             );
