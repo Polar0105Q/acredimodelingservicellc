@@ -64,9 +64,9 @@ export default function Header({ lang, theme, onLangChange, onThemeChange }: Hea
         }`}
       >
         {/* Logo */}
-        <Link href="#hero" className="flex items-center gap-2.5 min-w-0">
+        <Link href="#hero" className="flex min-w-0 items-center gap-2">
           <AppLogo size={36} />
-          <span className="font-display font-semibold text-lg tracking-tight text-foreground hidden sm:block">
+          <span className="block max-w-[8.25rem] truncate font-display text-[0.9rem] font-semibold tracking-tight text-foreground sm:max-w-none sm:text-lg">
             Remodeling Service
             <span className="text-accent font-bold"> LLC</span>
             <sup className="text-xs text-muted-foreground">®</sup>
@@ -88,7 +88,7 @@ export default function Header({ lang, theme, onLangChange, onThemeChange }: Hea
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           {/* Language Switcher */}
           <div className="flex items-center bg-muted rounded-xl overflow-hidden border border-border">
             <button
