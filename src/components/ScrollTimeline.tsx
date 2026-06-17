@@ -62,12 +62,38 @@ export default function ScrollTimeline({ lang }: ScrollTimelineProps) {
 
   return (
     <>
-      <div className="fixed left-0 right-0 top-0 z-[70] h-0.5 bg-transparent md:hidden">
-        <div
-          className="h-full bg-primary transition-transform duration-150 origin-left"
-          style={{ transform: `scaleX(${progress})` }}
-        />
-      </div>
+      <nav
+        aria-label={lang === 'en' ? 'Mobile page progress' : 'Progreso movil de pagina'}
+        className="fixed right-2 top-1/2 z-40 flex -translate-y-1/2 flex-col items-center md:hidden"
+      >
+        <div className="relative flex flex-col items-center gap-1.5 rounded-full border border-border bg-background/75 px-1.5 py-2 shadow-lg shadow-black/5 backdrop-blur-xl">
+          <div className="absolute top-4 bottom-4 left-1/2 w-px -translate-x-1/2 bg-border" />
+          <div
+            className="absolute top-4 left-1/2 w-px -translate-x-1/2 bg-primary transition-all duration-150"
+            style={{ height: `calc((100% - 2rem) * ${progress})` }}
+          />
+
+          {items.map((item) => {
+            const isActive = activeId === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                aria-label={item.label}
+                className="relative z-10 flex h-7 w-7 items-center justify-center"
+              >
+                <span
+                  className={`block rounded-full border transition-all duration-300 ${
+                    isActive
+                      ? 'h-3.5 w-3.5 border-primary bg-primary shadow-lg shadow-primary/30'
+                      : 'h-2.5 w-2.5 border-border bg-background'
+                  }`}
+                />
+              </a>
+            );
+          })}
+        </div>
+      </nav>
 
       <nav
         aria-label={lang === 'en' ? 'Page progress' : 'Progreso de pagina'}

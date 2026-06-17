@@ -260,8 +260,16 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                     : 'min-h-[260px] lg:min-h-[280px]'
                 }`}
                 style={{ transitionDelay: `${idx * 80}ms` }}
-                onMouseEnter={() => setHoveredId(project.id)}
-                onMouseLeave={() => setHoveredId(null)}
+                onPointerEnter={(event) => {
+                  if (event.pointerType === 'mouse') {
+                    setHoveredId(project.id);
+                  }
+                }}
+                onPointerLeave={(event) => {
+                  if (event.pointerType === 'mouse') {
+                    setHoveredId(null);
+                  }
+                }}
                 onClick={() =>
                   setActiveCompareId((current) => (current === project.id ? null : project.id))
                 }
