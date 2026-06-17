@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollTimeline from '@/components/ScrollTimeline';
 import HeroSection from './components/HeroSection';
 import TrustStats from './components/TrustStats';
 import ServicesSection from './components/ServicesSection';
@@ -38,6 +39,7 @@ export default function HomePage() {
       </div>
 
       <Header lang={lang} theme={theme} onLangChange={setLang} onThemeChange={setTheme} />
+      <ScrollTimeline lang={lang} />
 
       <main>
         <HeroSection lang={lang} />

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Icon from '@/components/ui/AppIcon';
 
 interface ProcessSectionProps {
@@ -97,7 +97,6 @@ const t = {
 export default function ProcessSection({ lang }: ProcessSectionProps) {
   const tx = t[lang];
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -124,14 +123,6 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
       ref={sectionRef}
       className="py-16 md:py-24 lg:py-32 bg-foreground text-background relative overflow-hidden"
     >
-      {/* Decorative large text */}
-      <div
-        className="hidden md:block absolute top-8 right-6 md:right-12 pointer-events-none select-none font-display font-bold text-background/5 leading-none"
-        style={{ fontSize: 'clamp(3rem, 6vw, 6.25rem)' }}
-      >
-        PROCESS
-      </div>
-
       <div className="absolute top-1/4 left-0 w-96 h-96 blob-primary animate-blob pointer-events-none opacity-20" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -146,14 +137,7 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
         {/* Steps — horizontal on desktop, vertical on mobile */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4">
           {tx.steps.map((step, i) => (
-            <div
-              key={step.num}
-              className={`relative group cursor-pointer reveal transition-all duration-300 ${
-                activeStep === i ? 'md:scale-105' : ''
-              }`}
-              style={{ transitionDelay: `${i * 100}ms` }}
-              onClick={() => setActiveStep(i)}
-            >
+            <div key={step.num} className="relative group transition-all duration-300">
               {/* Connector line (desktop) */}
               {i < tx.steps.length - 1 && (
                 <div className="hidden md:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-primary/40 to-transparent z-0 pointer-events-none" />
@@ -161,7 +145,7 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
 
               <div
                 className={`relative z-10 p-5 md:p-6 rounded-2xl border transition-all duration-300 ${
-                  activeStep === i
+                  i === 0
                     ? 'bg-primary border-primary shadow-xl shadow-primary/30'
                     : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
                 }`}
@@ -170,42 +154,42 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
                 <div className="flex items-center justify-between mb-4">
                   <span
                     className={`text-xs font-mono font-bold tracking-widest ${
-                      activeStep === i ? 'text-accent' : 'text-background/30'
+                      i === 0 ? 'text-accent' : 'text-background/30'
                     }`}
                   >
                     {step.num}
                   </span>
                   <div
                     className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                      activeStep === i ? 'bg-white/10' : 'bg-white/5'
+                      i === 0 ? 'bg-white/10' : 'bg-white/5'
                     }`}
                   >
                     <Icon
                       name={step.icon as 'ChatBubbleLeftRightIcon'}
                       size={20}
                       variant="outline"
-                      className={activeStep === i ? 'text-accent' : 'text-background/50'}
+                      className={i === 0 ? 'text-accent' : 'text-background/50'}
                     />
                   </div>
                 </div>
 
                 <h3
                   className={`text-base font-display font-bold mb-2 ${
-                    activeStep === i ? 'text-background' : 'text-background/80'
+                    i === 0 ? 'text-background' : 'text-background/80'
                   }`}
                 >
                   {step.title}
                 </h3>
                 <p
                   className={`text-xs leading-relaxed ${
-                    activeStep === i ? 'text-background/80' : 'text-background/40'
+                    i === 0 ? 'text-background/80' : 'text-background/40'
                   }`}
                 >
                   {step.desc}
                 </p>
                 <div
                   className={`mt-4 flex items-center gap-1.5 text-xs font-medium ${
-                    activeStep === i ? 'text-accent' : 'text-background/30'
+                    i === 0 ? 'text-accent' : 'text-background/30'
                   }`}
                 >
                   <Icon name="ClockIcon" size={12} variant="outline" />

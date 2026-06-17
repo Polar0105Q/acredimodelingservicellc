@@ -11,12 +11,14 @@ const t = {
     tagline: 'Transforming spaces into exceptional experiences.',
     services: 'Services',
     company: 'Company',
-    kitchen: 'Kitchen Remodeling',
-    bathroom: 'Bathroom Remodeling',
-    home: 'Home Renovation',
-    commercial: 'Commercial Remodeling',
-    flooring: 'Flooring Installation',
-    interior: 'Interior Design',
+    contactTitle: 'Contact',
+    serviceItems: [
+      'Painting & Drywall',
+      'Finish Carpentry',
+      'LVP Flooring Installation',
+      'Pressure Washing',
+      'Residential Project Support',
+    ],
     about: 'About Us',
     projects: 'Projects',
     process: 'Our Process',
@@ -24,51 +26,67 @@ const t = {
     privacy: 'Privacy',
     terms: 'Terms',
     copyright: '© 2026 Remodeling Service LLC®. All rights reserved.',
+    serviceArea: 'Serving all of South Florida',
   },
   es: {
     tagline: 'Transformando espacios en experiencias excepcionales.',
     services: 'Servicios',
     company: 'Empresa',
-    kitchen: 'Remodelación de Cocinas',
-    bathroom: 'Remodelación de Baños',
-    home: 'Renovación de Hogar',
-    commercial: 'Remodelación Comercial',
-    flooring: 'Instalación de Pisos',
-    interior: 'Diseño de Interiores',
+    contactTitle: 'Contacto',
+    serviceItems: [
+      'Pintura y Drywall',
+      'Carpinteria de Acabado',
+      'Instalacion de Pisos LVP',
+      'Lavado a Presion',
+      'Apoyo Residencial',
+    ],
     about: 'Nosotros',
     projects: 'Proyectos',
     process: 'Nuestro Proceso',
     contact: 'Contacto',
     privacy: 'Privacidad',
-    terms: 'Términos',
+    terms: 'Terminos',
     copyright: '© 2026 Remodeling Service LLC®. Todos los derechos reservados.',
+    serviceArea: 'Servicio en todo el sur de Florida',
   },
 };
+
+const socialLinks = ['instagram', 'facebook', 'x', 'youtube'];
 
 export default function Footer({ lang }: FooterProps) {
   const tx = t[lang];
 
+  const companyLinks = [
+    { label: tx.about, href: '#why-us' },
+    { label: tx.projects, href: '#projects' },
+    { label: tx.process, href: '#process' },
+    { label: tx.contact, href: '#contact' },
+  ];
+
   return (
     <footer className="bg-foreground text-background border-t border-white/10 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Main row */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
-          {/* Brand */}
           <div className="md:col-span-4">
-            <div className="flex items-center gap-2.5 mb-4">
-              <AppLogo size={36} />
-              <span className="font-display font-semibold text-lg tracking-tight text-background">
+            <a
+              href="#hero"
+              className="group inline-flex items-center gap-2.5 mb-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/60"
+            >
+              <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105">
+                <AppLogo size={36} />
+              </span>
+              <span className="font-display font-semibold text-lg tracking-tight text-background transition-colors duration-300 group-hover:text-white">
                 Remodeling Service
                 <span className="text-accent font-bold"> LLC</span>
                 <sup className="text-xs opacity-60">®</sup>
               </span>
-            </div>
+            </a>
             <p className="text-sm text-background/50 leading-relaxed max-w-xs mb-6">{tx.tagline}</p>
             <div className="flex gap-3" aria-label="Social profiles coming soon">
-              {(['instagram', 'facebook', 'twitter-x', 'youtube'] as const).map((social) => (
+              {socialLinks.map((social) => (
                 <span
                   key={social}
-                  className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-background/50 hover:text-background hover:bg-white/10 transition-all duration-200"
+                  className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-background/50 transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-primary/50 hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/25"
                   aria-label={social}
                 >
                   <Icon name="GlobeAltIcon" size={16} variant="outline" />
@@ -77,44 +95,37 @@ export default function Footer({ lang }: FooterProps) {
             </div>
           </div>
 
-          {/* Services */}
           <div className="md:col-span-3">
             <p className="text-xs uppercase tracking-widest text-background/30 font-semibold mb-5">
               {tx.services}
             </p>
             <ul className="space-y-3">
-              {[tx.kitchen, tx.bathroom, tx.home, tx.commercial, tx.flooring, tx.interior].map(
-                (s) => (
-                  <li key={s}>
-                    <a
-                      href="#services"
-                      className="text-sm text-background/60 hover:text-background transition-colors duration-200 font-medium"
-                    >
-                      {s}
-                    </a>
-                  </li>
-                )
-              )}
+              {tx.serviceItems.map((item) => (
+                <li key={item}>
+                  <a
+                    href="#services"
+                    className="group inline-flex items-center gap-2 text-sm text-background/60 transition-all duration-300 hover:translate-x-1 hover:text-background font-medium"
+                  >
+                    <span className="h-px w-0 bg-accent transition-all duration-300 group-hover:w-4" />
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Company */}
           <div className="md:col-span-2">
             <p className="text-xs uppercase tracking-widest text-background/30 font-semibold mb-5">
               {tx.company}
             </p>
             <ul className="space-y-3">
-              {[
-                { label: tx.about, href: '#about' },
-                { label: tx.projects, href: '#projects' },
-                { label: tx.process, href: '#process' },
-                { label: tx.contact, href: '#contact' },
-              ].map((item) => (
+              {companyLinks.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-sm text-background/60 hover:text-background transition-colors duration-200 font-medium"
+                    className="group inline-flex items-center gap-2 text-sm text-background/60 transition-all duration-300 hover:translate-x-1 hover:text-background font-medium"
                   >
+                    <span className="h-px w-0 bg-accent transition-all duration-300 group-hover:w-4" />
                     {item.label}
                   </a>
                 </li>
@@ -122,60 +133,58 @@ export default function Footer({ lang }: FooterProps) {
             </ul>
           </div>
 
-          {/* Contact */}
           <div className="md:col-span-3">
             <p className="text-xs uppercase tracking-widest text-background/30 font-semibold mb-5">
-              Contact
+              {tx.contactTitle}
             </p>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2 text-sm text-background/60">
+              <li className="group flex items-start gap-2 text-sm text-background/60 transition-colors duration-300 hover:text-background">
                 <Icon
                   name="PhoneIcon"
                   size={15}
                   variant="outline"
-                  className="mt-0.5 shrink-0 text-accent"
+                  className="mt-0.5 shrink-0 text-accent transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110"
                 />
                 <span>(305) 555-0192</span>
               </li>
-              <li className="flex items-start gap-2 text-sm text-background/60">
+              <li className="group flex items-start gap-2 text-sm text-background/60 transition-colors duration-300 hover:text-background">
                 <Icon
                   name="EnvelopeIcon"
                   size={15}
                   variant="outline"
-                  className="mt-0.5 shrink-0 text-accent"
+                  className="mt-0.5 shrink-0 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110"
                 />
                 <span className="break-all">info@remodelingservicellc.com</span>
               </li>
-              <li className="flex items-start gap-2 text-sm text-background/60">
+              <li className="group flex items-start gap-2 text-sm text-background/60 transition-colors duration-300 hover:text-background">
                 <Icon
                   name="MapPinIcon"
                   size={15}
                   variant="outline"
-                  className="mt-0.5 shrink-0 text-accent"
+                  className="mt-0.5 shrink-0 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110"
                 />
                 <span>
                   Miami, FL 33101
                   <br />
-                  Serving all of South Florida
+                  {tx.serviceArea}
                 </span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-background/30">{tx.copyright}</p>
           <div className="flex gap-6">
             <a
               href="/privacy"
-              className="text-xs text-background/40 hover:text-background transition-colors font-medium"
+              className="relative text-xs text-background/40 transition-colors font-medium hover:text-background after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
             >
               {tx.privacy}
             </a>
             <a
               href="/terms"
-              className="text-xs text-background/40 hover:text-background transition-colors font-medium"
+              className="relative text-xs text-background/40 transition-colors font-medium hover:text-background after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
             >
               {tx.terms}
             </a>

@@ -51,7 +51,7 @@ export default function Header({ lang, theme, onLangChange, onThemeChange }: Hea
     { label: tx.home, href: '#hero' },
     { label: tx.services, href: '#services' },
     { label: tx.projects, href: '#projects' },
-    { label: tx.about, href: '#about' },
+    { label: tx.about, href: '#why-us' },
     { label: tx.locations, href: '#locations' },
     { label: tx.contact, href: '#contact' },
   ];

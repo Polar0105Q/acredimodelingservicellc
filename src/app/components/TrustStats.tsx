@@ -58,7 +58,7 @@ function StatItem({
   const count = useCounter(end, 1800, started);
   return (
     <div
-      className="flex flex-col items-center text-center px-6 py-8 reveal"
+      className="flex flex-col items-center text-center px-4 py-5 md:px-6 md:py-7"
       style={{ transitionDelay: `${index * 120}ms` }}
     >
       <span className="font-display text-5xl md:text-6xl font-bold text-primary leading-none">
@@ -108,7 +108,7 @@ export default function TrustStats({ lang }: TrustStatsProps) {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div
-          className={`grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-border transition-all duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`}
+          className={`grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-border transition-opacity duration-500 ${visible ? 'opacity-100' : 'opacity-100'}`}
         >
           {tx.stats.map((stat, i) => (
             <StatItem key={stat.label} {...stat} index={i} started={started} />

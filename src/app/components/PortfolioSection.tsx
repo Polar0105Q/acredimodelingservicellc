@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import AppImage from '@/components/ui/AppImage';
 import Icon from '@/components/ui/AppIcon';
 
@@ -158,6 +159,8 @@ const filterMap: Record<string, string> = {
 export default function PortfolioSection({ lang }: PortfolioSectionProps) {
   const tx = t[lang];
   const [activeFilter, setActiveFilter] = useState(tx.filters[0]);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [activeCompareId, setActiveCompareId] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -187,6 +190,11 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
   const filtered =
     normalizedFilter === 'All' ? projects : projects.filter((p) => p.category === normalizedFilter);
 
+  useEffect(() => {
+    setHoveredId(null);
+    setActiveCompareId(null);
+  }, [activeFilter]);
+
   return (
     <section
       id="projects"
@@ -212,65 +220,81 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
           </a>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-10 reveal">
-          {tx.filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-5 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
-                activeFilter === filter
-                  ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
-                  : 'bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary/30'
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
+        <div className="-mx-6 px-6 mb-10 overflow-x-auto hide-scrollbar reveal">
+          <div className="flex w-max min-w-full gap-2">
+            {tx.filters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`min-w-[6.75rem] whitespace-nowrap px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
+                  activeFilter === filter
+                    ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
+                    : 'bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary/30'
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {filtered.map((project, idx) => {
             const isFeatured = project.featured && filtered.length > 2;
+            const showAfter = hoveredId === project.id || activeCompareId === project.id;
 
             return (
               <div
                 key={project.id}
-                className={`portfolio-card group relative rounded-3xl overflow-hidden bg-card border border-border cursor-pointer reveal ${
+                className={`portfolio-card group relative rounded-3xl overflow-hidden bg-card border border-border cursor-pointer ${
                   isFeatured
                     ? 'min-h-[360px] lg:min-h-[480px] lg:col-span-2 lg:row-span-2'
                     : 'min-h-[260px] lg:min-h-[280px]'
                 }`}
                 style={{ transitionDelay: `${idx * 80}ms` }}
+                onMouseEnter={() => setHoveredId(project.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                onClick={() =>
+                  setActiveCompareId((current) => (current === project.id ? null : project.id))
+                }
               >
                 <div className="absolute inset-0 w-full h-full">
-                  <div className="grid grid-cols-2 h-full">
-                    <div className="relative overflow-hidden border-r border-white/20">
-                      <AppImage
-                        src={project.before}
-                        alt={project.beforeAlt}
-                        fill
-                        className="card-img object-cover"
-                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                        quality={75}
-                      />
-                      <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-[0.65rem] font-bold uppercase tracking-wider bg-black/55 text-white backdrop-blur-sm">
-                        {tx.before}
-                      </span>
-                    </div>
+                  <Image
+                    src={project.before}
+                    alt={project.beforeAlt}
+                    fill
+                    className={`absolute inset-0 card-img object-cover transition-all duration-700 ${
+                      showAfter ? 'scale-105 opacity-0' : 'scale-100 opacity-100'
+                    }`}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={75}
+                  />
 
-                    <div className="relative overflow-hidden">
-                      <AppImage
-                        src={project.after}
-                        alt={project.afterAlt}
-                        fill
-                        className="card-img object-cover"
-                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                        quality={75}
-                      />
-                      <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-[0.65rem] font-bold uppercase tracking-wider bg-accent text-accent-foreground">
-                        {tx.after}
-                      </span>
-                    </div>
+                  <Image
+                    src={project.after}
+                    alt={project.afterAlt}
+                    fill
+                    className={`absolute inset-0 card-img object-cover transition-all duration-700 ${
+                      showAfter ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
+                    }`}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={75}
+                  />
+
+                  <div className="absolute top-4 left-4 flex gap-2">
+                    <span
+                      className={`px-3 py-1 rounded-full text-[0.65rem] font-bold uppercase tracking-wider transition-all duration-300 ${
+                        showAfter
+                          ? 'bg-accent text-accent-foreground'
+                          : 'bg-black/55 text-white backdrop-blur-sm'
+                      }`}
+                    >
+                      {showAfter ? tx.after : tx.before}
+                    </span>
+                  </div>
+
+                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-[0.62rem] font-bold uppercase tracking-wider bg-white/12 text-white backdrop-blur-sm border border-white/15 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                    {tx.before} / {tx.after}
                   </div>
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent pointer-events-none" />
@@ -288,7 +312,6 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                     <span>{project.detail}</span>
                   </div>
                 </div>
-                <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/30 pointer-events-none" />
               </div>
             );
           })}

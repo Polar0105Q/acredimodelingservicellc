@@ -114,7 +114,7 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
     <section
       id="services"
       ref={sectionRef}
-      className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden"
+      className="pt-12 pb-16 md:pt-16 md:pb-24 lg:pt-20 lg:pb-32 bg-background relative overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-96 h-96 blob-primary animate-blob pointer-events-none opacity-40" />
 
