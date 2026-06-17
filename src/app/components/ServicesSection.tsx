@@ -10,101 +10,77 @@ interface ServicesSectionProps {
 const t = {
   en: {
     label: 'What We Do',
-    heading: 'Premium Remodeling Services',
-    sub: 'From concept to completion, we deliver exceptional craftsmanship across every project.',
+    heading: 'Professional Remodeling Services',
+    sub: 'Focused trade services for clean finishes, durable surfaces, and reliable exterior care.',
     learn: 'Learn More',
     services: [
       {
-        icon: 'HomeModernIcon',
-        title: 'Kitchen Remodeling',
-        desc: 'Custom cabinetry, quartz countertops, premium appliances, and intelligent layouts that transform your kitchen into the heart of your home.',
-        tag: 'Most Popular',
-        accent: true,
+        icon: 'PaintBrushIcon',
+        title: 'Painting & Drywall',
+        desc: 'Interior and exterior painting, drywall installation, drywall finishing, and popcorn ceiling removal.',
+        tag: 'Core Service',
       },
       {
-        icon: 'BuildingOfficeIcon',
-        title: 'Bathroom Remodeling',
-        desc: 'Spa-inspired designs with luxury tile work, frameless glass, heated floors, and premium fixtures for your personal sanctuary.',
+        icon: 'WrenchScrewdriverIcon',
+        title: 'Finish Carpentry',
+        desc: 'Doors, baseboards, window trim, and wooden stairs installed with clean detail and careful finishing.',
         tag: '',
-        accent: false,
-      },
-      {
-        icon: 'HomeIcon',
-        title: 'Home Renovation',
-        desc: 'Full-scale home transformations including open-concept conversions, additions, and complete interior overhauls.',
-        tag: '',
-        accent: false,
-      },
-      {
-        icon: 'BuildingStorefrontIcon',
-        title: 'Commercial Remodeling',
-        desc: 'Office buildouts, retail spaces, and restaurant renovations that balance aesthetics with functional efficiency.',
-        tag: '',
-        accent: false,
       },
       {
         icon: 'Squares2X2Icon',
-        title: 'Flooring Installation',
-        desc: 'Hardwood, luxury vinyl, porcelain tile, and custom stone installations with precision craftsmanship.',
+        title: 'Flooring',
+        desc: 'LVP flooring installation with proper preparation, alignment, transitions, and finish details.',
         tag: '',
-        accent: false,
       },
       {
-        icon: 'PaintBrushIcon',
-        title: 'Interior Design',
-        desc: 'Full-service interior design consultation, space planning, material selection, and project coordination.',
+        icon: 'SparklesIcon',
+        title: 'Exterior Services',
+        desc: 'Pressure washing for exterior surfaces to restore curb appeal and prepare areas for maintenance.',
         tag: '',
-        accent: false,
+      },
+      {
+        icon: 'HomeModernIcon',
+        title: 'Residential Project Support',
+        desc: 'Coordinated finish work that helps homes and small properties look polished, practical, and ready to use.',
+        tag: '',
       },
     ],
   },
   es: {
     label: 'Lo Que Hacemos',
-    heading: 'Servicios Premium de Remodelación',
-    sub: 'Del concepto a la realidad, entregamos artesanía excepcional en cada proyecto.',
-    learn: 'Saber Más',
+    heading: 'Servicios Profesionales de Remodelacion',
+    sub: 'Servicios especializados para acabados limpios, superficies duraderas y mantenimiento exterior confiable.',
+    learn: 'Saber Mas',
     services: [
       {
-        icon: 'HomeModernIcon',
-        title: 'Remodelación de Cocinas',
-        desc: 'Gabinetes personalizados, encimeras de cuarzo y diseños inteligentes que transforman tu cocina.',
-        tag: 'Más Popular',
-        accent: true,
+        icon: 'PaintBrushIcon',
+        title: 'Pintura y Drywall',
+        desc: 'Pintura interior y exterior, instalacion de drywall, acabado de drywall y remocion de techo popcorn.',
+        tag: 'Servicio Principal',
       },
       {
-        icon: 'BuildingOfficeIcon',
-        title: 'Remodelación de Baños',
-        desc: 'Diseños inspirados en spas con azulejos de lujo, vidrio sin marco y accesorios premium.',
+        icon: 'WrenchScrewdriverIcon',
+        title: 'Carpinteria de Acabado',
+        desc: 'Puertas, zocalos, molduras de ventanas y escaleras de madera con detalle limpio y buen acabado.',
         tag: '',
-        accent: false,
-      },
-      {
-        icon: 'HomeIcon',
-        title: 'Renovación de Hogar',
-        desc: 'Transformaciones de hogar a gran escala, incluyendo conversiones de concepto abierto.',
-        tag: '',
-        accent: false,
-      },
-      {
-        icon: 'BuildingStorefrontIcon',
-        title: 'Remodelación Comercial',
-        desc: 'Oficinas, espacios de venta y restaurantes que equilibran estética y eficiencia funcional.',
-        tag: '',
-        accent: false,
       },
       {
         icon: 'Squares2X2Icon',
-        title: 'Instalación de Pisos',
-        desc: 'Madera, vinilo de lujo, porcelana y piedra personalizada con artesanía de precisión.',
+        title: 'Pisos',
+        desc: 'Instalacion de pisos LVP con preparacion correcta, alineacion, transiciones y detalles finales.',
         tag: '',
-        accent: false,
       },
       {
-        icon: 'PaintBrushIcon',
-        title: 'Diseño de Interiores',
-        desc: 'Consultoría de diseño, planificación de espacios y selección de materiales.',
+        icon: 'SparklesIcon',
+        title: 'Servicios Exteriores',
+        desc: 'Lavado a presion para superficies exteriores, ideal para mejorar la apariencia y preparar mantenimiento.',
         tag: '',
-        accent: false,
+      },
+      {
+        icon: 'HomeModernIcon',
+        title: 'Apoyo para Proyectos Residenciales',
+        desc: 'Trabajo coordinado de acabados para que casas y propiedades pequenas luzcan pulidas y funcionales.',
+        tag: '',
       },
     ],
   },
@@ -140,11 +116,9 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
       ref={sectionRef}
       className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden"
     >
-      {/* Decorative bg */}
       <div className="absolute top-0 right-0 w-96 h-96 blob-primary animate-blob pointer-events-none opacity-40" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header */}
         <div className="max-w-2xl mb-10 md:mb-16 reveal">
           <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">
             {tx.label}
@@ -153,153 +127,115 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{tx.sub}</p>
         </div>
 
-        {/* Bento-style services grid */}
-        {/* BENTO AUDIT:
-          Array has 6 cards: Kitchen, Bathroom, Home, Commercial, Flooring, Interior
-          Row 1: [col-1: Kitchen cs-2 (featured)] [col-3: Bathroom cs-1] [col-4: Home cs-1]
-          Row 2: [col-1: Commercial cs-1] [col-2: Flooring cs-1] [col-3: Interior cs-2]
-          Placed 6/6 cards ✓
-        */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Kitchen — featured large card */}
-          <div className="lg:col-span-2 service-card group bg-primary text-primary-foreground rounded-3xl p-6 md:p-8 flex flex-col justify-between min-h-[260px] md:min-h-[320px] relative overflow-hidden cursor-pointer reveal">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-blue-800 opacity-90" />
-            <div className="absolute bottom-0 right-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl" />
-            <div className="relative z-10 flex flex-col h-full">
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
-                  <Icon name="HomeModernIcon" size={28} variant="outline" className="text-accent" />
+          {tx.services.map((service, i) => {
+            const featured = i === 0;
+            const dark = i === tx.services.length - 1;
+            const accent = i === 2;
+
+            return (
+              <div
+                key={service.title}
+                className={`service-card group rounded-3xl p-6 md:p-7 flex flex-col justify-between relative overflow-hidden cursor-pointer reveal transition-all duration-300 ${
+                  featured
+                    ? 'lg:col-span-2 bg-primary text-primary-foreground min-h-[260px] md:min-h-[320px]'
+                    : dark
+                      ? 'lg:col-span-2 bg-foreground text-background min-h-[240px] md:min-h-[280px]'
+                      : accent
+                        ? 'bg-accent/5 border border-accent/20 min-h-[240px] md:min-h-[280px] hover:bg-accent/10 hover:shadow-xl'
+                        : 'bg-card border border-border min-h-[240px] md:min-h-[280px] hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5'
+                }`}
+                style={{ transitionDelay: `${i * 80}ms` }}
+              >
+                {featured && (
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-blue-800 opacity-90" />
+                    <div className="absolute bottom-0 right-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl" />
+                  </>
+                )}
+
+                {dark && (
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-br from-foreground to-gray-800" />
+                    <div className="absolute top-0 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+                  </>
+                )}
+
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-start justify-between gap-4 mb-6">
+                    <div
+                      className={`rounded-2xl flex items-center justify-center transition-all duration-300 ${
+                        featured
+                          ? 'w-14 h-14 bg-white/10'
+                          : dark
+                            ? 'w-12 h-12 bg-white/10'
+                            : accent
+                              ? 'w-12 h-12 bg-accent/20'
+                              : 'w-12 h-12 bg-primary/10 group-hover:bg-primary'
+                      }`}
+                    >
+                      <Icon
+                        name={service.icon}
+                        size={featured ? 28 : 24}
+                        variant="outline"
+                        className={
+                          featured || dark
+                            ? 'text-accent'
+                            : accent
+                              ? 'text-accent-foreground'
+                              : 'text-primary group-hover:text-primary-foreground'
+                        }
+                      />
+                    </div>
+
+                    {service.tag && (
+                      <span className="px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-bold uppercase tracking-wider">
+                        {service.tag}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex-1">
+                    <h3
+                      className={`font-display font-bold mb-3 ${
+                        featured ? 'text-2xl' : dark ? 'text-xl' : 'text-lg text-card-foreground'
+                      }`}
+                    >
+                      {service.title}
+                    </h3>
+                    <p
+                      className={`text-sm leading-relaxed ${
+                        featured
+                          ? 'text-primary-foreground/70'
+                          : dark
+                            ? 'text-background/60'
+                            : 'text-muted-foreground'
+                      }`}
+                    >
+                      {service.desc}
+                    </p>
+                  </div>
+
+                  <div
+                    className={`mt-6 flex items-center gap-2 font-semibold transition-all duration-300 ${
+                      featured || dark
+                        ? 'text-sm text-accent group-hover:gap-4'
+                        : accent
+                          ? 'text-xs text-foreground group-hover:gap-3'
+                          : 'text-xs text-primary group-hover:gap-3'
+                    }`}
+                  >
+                    {tx.learn}
+                    <Icon
+                      name="ArrowRightIcon"
+                      size={featured || dark ? 16 : 14}
+                      variant="outline"
+                    />
+                  </div>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-bold uppercase tracking-wider">
-                  {tx.services[0].tag}
-                </span>
               </div>
-              <h3 className="text-2xl font-display font-bold mb-3">{tx.services[0].title}</h3>
-              <p className="text-primary-foreground/70 text-sm leading-relaxed flex-1">
-                {tx.services[0].desc}
-              </p>
-              <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-accent group-hover:gap-4 transition-all duration-300">
-                {tx.learn} <Icon name="ArrowRightIcon" size={16} variant="outline" />
-              </div>
-            </div>
-          </div>
-
-          {/* Bathroom */}
-          <div
-            className="service-card group bg-card border border-border rounded-3xl p-6 md:p-7 flex flex-col justify-between min-h-[240px] md:min-h-[280px] cursor-pointer hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 reveal"
-            style={{ transitionDelay: '100ms' }}
-          >
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-              <Icon
-                name="BuildingOfficeIcon"
-                size={24}
-                variant="outline"
-                className="text-primary group-hover:text-primary-foreground"
-              />
-            </div>
-            <div>
-              <h3 className="text-lg font-display font-bold text-card-foreground mb-2">
-                {tx.services[1].title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{tx.services[1].desc}</p>
-            </div>
-            <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-primary group-hover:gap-3 transition-all duration-300">
-              {tx.learn} <Icon name="ArrowRightIcon" size={14} variant="outline" />
-            </div>
-          </div>
-
-          {/* Home Renovation */}
-          <div
-            className="service-card group bg-accent/5 border border-accent/20 rounded-3xl p-6 md:p-7 flex flex-col justify-between min-h-[240px] md:min-h-[280px] cursor-pointer hover:bg-accent/10 hover:shadow-xl transition-all duration-300 reveal"
-            style={{ transitionDelay: '150ms' }}
-          >
-            <div className="w-12 h-12 rounded-2xl bg-accent/20 flex items-center justify-center mb-4">
-              <Icon
-                name="HomeIcon"
-                size={24}
-                variant="outline"
-                className="text-accent-foreground"
-              />
-            </div>
-            <div>
-              <h3 className="text-lg font-display font-bold text-card-foreground mb-2">
-                {tx.services[2].title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{tx.services[2].desc}</p>
-            </div>
-            <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-foreground group-hover:gap-3 transition-all duration-300">
-              {tx.learn} <Icon name="ArrowRightIcon" size={14} variant="outline" />
-            </div>
-          </div>
-
-          {/* Commercial */}
-          <div
-            className="service-card group bg-card border border-border rounded-3xl p-6 md:p-7 flex flex-col justify-between min-h-[240px] md:min-h-[280px] cursor-pointer hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 reveal"
-            style={{ transitionDelay: '200ms' }}
-          >
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-all duration-300">
-              <Icon
-                name="BuildingStorefrontIcon"
-                size={24}
-                variant="outline"
-                className="text-primary group-hover:text-primary-foreground"
-              />
-            </div>
-            <div>
-              <h3 className="text-lg font-display font-bold text-card-foreground mb-2">
-                {tx.services[3].title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{tx.services[3].desc}</p>
-            </div>
-            <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-primary group-hover:gap-3 transition-all duration-300">
-              {tx.learn} <Icon name="ArrowRightIcon" size={14} variant="outline" />
-            </div>
-          </div>
-
-          {/* Flooring */}
-          <div
-            className="service-card group bg-card border border-border rounded-3xl p-6 md:p-7 flex flex-col justify-between min-h-[240px] md:min-h-[280px] cursor-pointer hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 reveal"
-            style={{ transitionDelay: '250ms' }}
-          >
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-all duration-300">
-              <Icon
-                name="Squares2X2Icon"
-                size={24}
-                variant="outline"
-                className="text-primary group-hover:text-primary-foreground"
-              />
-            </div>
-            <div>
-              <h3 className="text-lg font-display font-bold text-card-foreground mb-2">
-                {tx.services[4].title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{tx.services[4].desc}</p>
-            </div>
-            <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-primary group-hover:gap-3 transition-all duration-300">
-              {tx.learn} <Icon name="ArrowRightIcon" size={14} variant="outline" />
-            </div>
-          </div>
-
-          {/* Interior Design — large card */}
-          <div
-            className="lg:col-span-2 service-card group bg-foreground text-background rounded-3xl p-6 md:p-8 flex flex-col justify-between min-h-[240px] md:min-h-[280px] relative overflow-hidden cursor-pointer reveal"
-            style={{ transitionDelay: '300ms' }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-foreground to-gray-800" />
-            <div className="absolute top-0 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-            <div className="relative z-10 flex flex-col h-full">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-4">
-                <Icon name="PaintBrushIcon" size={24} variant="outline" className="text-accent" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-display font-bold mb-2">{tx.services[5].title}</h3>
-                <p className="text-background/60 text-sm leading-relaxed">{tx.services[5].desc}</p>
-              </div>
-              <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-accent group-hover:gap-4 transition-all duration-300">
-                {tx.learn} <Icon name="ArrowRightIcon" size={16} variant="outline" />
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>

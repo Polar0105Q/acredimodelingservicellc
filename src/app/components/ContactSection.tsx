@@ -21,12 +21,11 @@ const t = {
       submit: 'Send Message',
     },
     services: [
-      'Kitchen Remodeling',
-      'Bathroom Remodeling',
-      'Home Renovation',
-      'Commercial Remodeling',
-      'Flooring Installation',
-      'Interior Design',
+      'Painting & Drywall',
+      'Finish Carpentry',
+      'Flooring - LVP Installation',
+      'Exterior Services - Pressure Washing',
+      'Residential Project Support',
       'Other',
     ],
     success: "Message sent! We'll contact you within 24 hours.",
@@ -73,8 +72,28 @@ const t = {
   },
 };
 
+const contactServices = {
+  en: [
+    'Painting & Drywall',
+    'Finish Carpentry',
+    'Flooring - LVP Installation',
+    'Exterior Services - Pressure Washing',
+    'Residential Project Support',
+    'Other',
+  ],
+  es: [
+    'Pintura y Drywall',
+    'Carpinteria de Acabado',
+    'Pisos - Instalacion LVP',
+    'Servicios Exteriores - Lavado a Presion',
+    'Apoyo para Proyectos Residenciales',
+    'Otro',
+  ],
+};
+
 export default function ContactSection({ lang }: ContactSectionProps) {
   const tx = t[lang];
+  const serviceOptions = contactServices[lang];
   const sectionRef = useRef<HTMLElement>(null);
   const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -298,7 +317,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
                       required
                     >
                       <option value=""></option>
-                      {tx.services.map((s) => (
+                      {serviceOptions.map((s) => (
                         <option key={s} value={s}>
                           {s}
                         </option>
