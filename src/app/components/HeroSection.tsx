@@ -23,7 +23,6 @@ const t = {
     stat3: '98%',
     stat3l: 'Satisfaction Rate',
     scroll: 'Scroll',
-    live: 'Active Project: Miami Beach',
   },
   es: {
     badge: 'Est. 2008 · Licenciado y Asegurado',
@@ -39,7 +38,6 @@ const t = {
     stat3: '98%',
     stat3l: 'Satisfacción',
     scroll: 'Desplazar',
-    live: 'Proyecto Activo: Miami Beach',
   },
 };
 
@@ -97,19 +95,6 @@ export default function HeroSection({ lang }: HeroSectionProps) {
         className="absolute bottom-1/3 left-1/3 w-72 h-72 rounded-full blob-accent animate-blob pointer-events-none z-1"
         style={{ animationDelay: '3s', transition: 'transform 0.3s ease-out' }}
       />
-
-      {/* Live badge */}
-      <div
-        className="hidden xl:block absolute top-28 right-6 md:right-12 z-20 animate-slide-up opacity-0"
-        style={{ animationDelay: '2.2s', animationFillMode: 'forwards' }}
-      >
-        <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl glass-card border border-white/15">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-xs font-mono tracking-wider uppercase text-white/90">
-            {tx.live}
-          </span>
-        </div>
-      </div>
 
       {/* Main content grid */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 md:px-10 xl:px-12 grid grid-cols-1 xl:grid-cols-12 gap-7 xl:gap-8 items-end">
