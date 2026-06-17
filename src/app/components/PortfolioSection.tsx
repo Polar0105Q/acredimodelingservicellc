@@ -158,7 +158,6 @@ const filterMap: Record<string, string> = {
 export default function PortfolioSection({ lang }: PortfolioSectionProps) {
   const tx = t[lang];
   const [activeFilter, setActiveFilter] = useState(tx.filters[0]);
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -242,32 +241,39 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                     : 'min-h-[260px] lg:min-h-[280px]'
                 }`}
                 style={{ transitionDelay: `${idx * 80}ms` }}
-                onMouseEnter={() => setHoveredId(project.id)}
-                onMouseLeave={() => setHoveredId(null)}
               >
                 <div className="absolute inset-0 w-full h-full">
-                  <AppImage
-                    src={hoveredId === project.id ? project.after : project.before}
-                    alt={hoveredId === project.id ? project.afterAlt : project.beforeAlt}
-                    fill
-                    className="card-img object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    quality={78}
-                  />
+                  <div className="grid grid-cols-2 h-full">
+                    <div className="relative overflow-hidden border-r border-white/20">
+                      <AppImage
+                        src={project.before}
+                        alt={project.beforeAlt}
+                        fill
+                        className="card-img object-cover"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                        quality={75}
+                      />
+                      <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-[0.65rem] font-bold uppercase tracking-wider bg-black/55 text-white backdrop-blur-sm">
+                        {tx.before}
+                      </span>
+                    </div>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-                </div>
+                    <div className="relative overflow-hidden">
+                      <AppImage
+                        src={project.after}
+                        alt={project.afterAlt}
+                        fill
+                        className="card-img object-cover"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                        quality={75}
+                      />
+                      <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-[0.65rem] font-bold uppercase tracking-wider bg-accent text-accent-foreground">
+                        {tx.after}
+                      </span>
+                    </div>
+                  </div>
 
-                <div className="absolute top-4 left-4 flex gap-2">
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
-                      hoveredId !== project.id
-                        ? 'bg-black/50 text-white backdrop-blur-sm'
-                        : 'bg-accent text-accent-foreground'
-                    }`}
-                  >
-                    {hoveredId === project.id ? tx.after : tx.before}
-                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent pointer-events-none" />
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -282,17 +288,7 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                     <span>{project.detail}</span>
                   </div>
                 </div>
-
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="flex flex-col items-center gap-2 text-white">
-                    <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                      <Icon name="ArrowsRightLeftIcon" size={20} variant="outline" />
-                    </div>
-                    <span className="text-xs font-medium">
-                      {tx.before} / {tx.after}
-                    </span>
-                  </div>
-                </div>
+                <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/30 pointer-events-none" />
               </div>
             );
           })}
@@ -328,7 +324,7 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                   fill
                   className="object-cover transition-transform duration-500 hover:scale-105"
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  quality={78}
+                  quality={75}
                 />
               </div>
             ))}
