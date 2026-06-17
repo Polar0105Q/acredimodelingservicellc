@@ -101,7 +101,7 @@ export default function TestimonialsSection({ lang }: TestimonialsSectionProps) 
     <section
       id="testimonials"
       ref={sectionRef}
-      className="py-24 md:py-32 bg-secondary relative overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 bg-secondary relative overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 right-0 w-96 h-96 blob-accent animate-blob opacity-20" />
@@ -112,12 +112,12 @@ export default function TestimonialsSection({ lang }: TestimonialsSectionProps) 
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 reveal">
+        <div className="text-center mb-10 md:mb-16 reveal">
           <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">
             {tx.label}
           </span>
           <h2 className="text-section font-display font-bold text-foreground mb-4">{tx.heading}</h2>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">{tx.sub}</p>
+          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">{tx.sub}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

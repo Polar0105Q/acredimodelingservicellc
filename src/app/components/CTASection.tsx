@@ -51,10 +51,13 @@ export default function CTASection({ lang }: CTASectionProps) {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 px-6 bg-background relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="py-16 md:py-24 px-5 md:px-6 bg-background relative overflow-hidden"
+    >
       <div className="max-w-5xl mx-auto relative">
         {/* Background card */}
-        <div className="relative rounded-[2.5rem] overflow-hidden min-h-[400px] flex items-center">
+        <div className="relative rounded-3xl md:rounded-[2.5rem] overflow-hidden min-h-[360px] md:min-h-[400px] flex items-center">
           {/* Background image */}
           <AppImage
             src="https://img.rocket.new/generatedImages/rocket_gen_img_12253e59e-1772950411886.png"
@@ -62,6 +65,7 @@ export default function CTASection({ lang }: CTASectionProps) {
             fill
             className="object-cover"
             sizes="(max-width: 1280px) 100vw, 80rem"
+            quality={75}
           />
 
           {/* Strong dark scrim for white text */}
@@ -73,24 +77,26 @@ export default function CTASection({ lang }: CTASectionProps) {
           <div className="absolute top-0 right-0 w-96 h-96 blob-accent animate-blob opacity-20 pointer-events-none" />
 
           {/* Content */}
-          <div className="relative z-10 w-full px-8 md:px-16 py-16">
+          <div className="relative z-10 w-full px-6 md:px-16 py-12 md:py-16">
             <div className="max-w-2xl reveal">
-              <h2 className="text-display font-display font-bold text-white mb-6 leading-tight">
+              <h2 className="text-display font-display font-bold text-white mb-5 md:mb-6">
                 {tx.heading}
               </h2>
-              <p className="text-lg text-white/70 mb-8 leading-relaxed">{tx.sub}</p>
+              <p className="text-base md:text-lg text-white/70 mb-7 md:mb-8 leading-relaxed">
+                {tx.sub}
+              </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <a
                   href="#contact"
-                  className="flex items-center justify-center gap-2 px-8 py-4 bg-accent text-accent-foreground rounded-xl font-bold text-sm hover:opacity-90 transition-all shadow-2xl shadow-accent/30 hover:shadow-accent/50"
+                  className="flex items-center justify-center gap-2 px-5 sm:px-8 py-4 bg-accent text-accent-foreground rounded-xl font-bold text-sm hover:opacity-90 transition-all shadow-2xl shadow-accent/30 hover:shadow-accent/50"
                 >
                   {tx.cta}
                   <Icon name="ArrowRightIcon" size={18} variant="outline" />
                 </a>
               </div>
 
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-4">
                 <span className="text-sm text-white/50">{tx.call}</span>
                 <a
                   href={`tel:${tx.phone}`}
@@ -100,7 +106,7 @@ export default function CTASection({ lang }: CTASectionProps) {
                 </a>
               </div>
 
-              <p className="text-xs text-white/40 flex items-center gap-2">
+              <p className="text-xs text-white/40 flex items-start sm:items-center gap-2">
                 <Icon name="CheckCircleIcon" size={14} variant="outline" className="text-accent" />
                 {tx.guarantee}
               </p>

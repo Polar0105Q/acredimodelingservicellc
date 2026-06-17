@@ -44,7 +44,7 @@ const AppImage = memo(function AppImage({
   height,
   className = '',
   priority = false,
-  quality = 85,
+  quality = 75,
   placeholder = 'empty',
   blurDataURL,
   fill = false,
@@ -91,6 +91,7 @@ const AppImage = memo(function AppImage({
       onError: handleError,
       onLoad: handleLoad,
       onClick,
+      decoding: 'async',
     };
 
     if (priority) {

@@ -122,12 +122,12 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
     <section
       id="process"
       ref={sectionRef}
-      className="py-24 md:py-32 bg-foreground text-background relative overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 bg-foreground text-background relative overflow-hidden"
     >
       {/* Decorative large text */}
       <div
-        className="absolute top-8 right-6 md:right-12 pointer-events-none select-none font-display font-bold text-background/5 leading-none"
-        style={{ fontSize: 'clamp(3rem, 7.5vw, 7.5rem)' }}
+        className="hidden md:block absolute top-8 right-6 md:right-12 pointer-events-none select-none font-display font-bold text-background/5 leading-none"
+        style={{ fontSize: 'clamp(3rem, 6vw, 6.25rem)' }}
       >
         PROCESS
       </div>
@@ -135,12 +135,12 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
       <div className="absolute top-1/4 left-0 w-96 h-96 blob-primary animate-blob pointer-events-none opacity-20" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="max-w-2xl mb-16 reveal">
+        <div className="max-w-2xl mb-10 md:mb-16 reveal">
           <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">
             {tx.label}
           </span>
           <h2 className="text-section font-display font-bold text-background mb-4">{tx.heading}</h2>
-          <p className="text-lg text-background/60 leading-relaxed">{tx.sub}</p>
+          <p className="text-base md:text-lg text-background/60 leading-relaxed">{tx.sub}</p>
         </div>
 
         {/* Steps — horizontal on desktop, vertical on mobile */}
@@ -160,7 +160,7 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
               )}
 
               <div
-                className={`relative z-10 p-6 rounded-2xl border transition-all duration-300 ${
+                className={`relative z-10 p-5 md:p-6 rounded-2xl border transition-all duration-300 ${
                   activeStep === i
                     ? 'bg-primary border-primary shadow-xl shadow-primary/30'
                     : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'

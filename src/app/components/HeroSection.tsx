@@ -67,7 +67,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
     <section
       id="hero"
       ref={heroRef}
-      className="relative w-full min-h-screen overflow-hidden flex flex-col justify-end pb-16 md:pb-24 noise-overlay"
+      className="relative w-full min-h-[100svh] overflow-hidden flex flex-col justify-end pt-28 pb-12 md:pb-16 lg:pb-20 noise-overlay"
     >
       {/* Background Image — cinematic entrance */}
       <div className="absolute inset-0 z-0 bg-foreground">
@@ -100,7 +100,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
 
       {/* Live badge */}
       <div
-        className="absolute top-28 right-6 md:right-12 z-20 animate-slide-up opacity-0"
+        className="hidden xl:block absolute top-28 right-6 md:right-12 z-20 animate-slide-up opacity-0"
         style={{ animationDelay: '2.2s', animationFillMode: 'forwards' }}
       >
         <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl glass-card border border-white/15">
@@ -112,9 +112,9 @@ export default function HeroSection({ lang }: HeroSectionProps) {
       </div>
 
       {/* Main content grid */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 md:px-10 xl:px-12 grid grid-cols-1 xl:grid-cols-12 gap-7 xl:gap-8 items-end">
         {/* Left: Headline */}
-        <div className="lg:col-span-7">
+        <div className="xl:col-span-6 min-w-0">
           {/* Badge */}
           <div
             className="flex items-center gap-3 mb-6 animate-slide-up opacity-0"
@@ -126,7 +126,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
             </span>
           </div>
 
-          <h1 className="font-display font-bold text-white leading-none tracking-tight">
+          <h1 className="max-w-[42rem] font-display font-bold text-white tracking-tight">
             <span
               className="block text-hero animate-slide-up opacity-0"
               style={{ animationDelay: '1.2s', animationFillMode: 'forwards' }}
@@ -144,30 +144,30 @@ export default function HeroSection({ lang }: HeroSectionProps) {
 
         {/* Right: Glassmorphism card */}
         <div
-          className="max-w-xl lg:max-w-none lg:col-span-5 animate-slide-up opacity-0"
+          className="max-w-xl xl:max-w-md 2xl:max-w-lg xl:col-span-5 xl:col-start-8 xl:justify-self-end animate-slide-up opacity-0"
           style={{ animationDelay: '1.6s', animationFillMode: 'forwards' }}
         >
-          <div className="relative overflow-hidden glass-card rounded-3xl p-6 md:p-8 shadow-2xl">
+          <div className="relative overflow-hidden glass-card rounded-3xl p-5 sm:p-6 md:p-7 shadow-2xl">
             {/* Shimmer */}
             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none animate-shimmer z-0" />
 
             <div className="relative z-10">
-              <p className="text-base md:text-lg text-white/80 font-light leading-relaxed mb-8">
+              <p className="text-sm sm:text-base md:text-lg text-white/80 font-light leading-relaxed mb-6 md:mb-8">
                 {tx.sub}
               </p>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 border-t border-white/15 pt-6 mb-8">
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 border-t border-white/15 pt-5 md:pt-6 mb-6 md:mb-8">
                 {[
                   { val: tx.stat1, label: tx.stat1l },
                   { val: tx.stat2, label: tx.stat2l },
                   { val: tx.stat3, label: tx.stat3l },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <span className="block text-2xl font-display font-bold text-accent">
+                    <span className="block text-xl md:text-2xl font-display font-bold text-accent">
                       {stat.val}
                     </span>
-                    <span className="block text-xs uppercase tracking-wider text-white/40 mt-0.5">
+                    <span className="block text-[0.62rem] sm:text-xs uppercase tracking-wider text-white/40 mt-0.5">
                       {stat.label}
                     </span>
                   </div>
@@ -178,14 +178,14 @@ export default function HeroSection({ lang }: HeroSectionProps) {
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
                   href="#contact"
-                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground rounded-xl text-sm font-semibold hover:opacity-90 transition-all shadow-lg shadow-primary/30"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 bg-primary text-primary-foreground rounded-xl text-sm font-semibold hover:opacity-90 transition-all shadow-lg shadow-primary/30"
                 >
                   {tx.cta1}
                   <Icon name="ArrowRightIcon" size={16} variant="outline" />
                 </a>
                 <a
                   href="#projects"
-                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 border border-white/20 text-white rounded-xl text-sm font-semibold hover:bg-white/10 transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 border border-white/20 text-white rounded-xl text-sm font-semibold hover:bg-white/10 transition-all"
                 >
                   {tx.cta2}
                 </a>

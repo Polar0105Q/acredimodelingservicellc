@@ -311,15 +311,18 @@
 
   /* Hero heading size */
   .text-hero {
-    font-size: clamp(2.75rem, 5.4vw, 5.75rem);
+    font-size: clamp(2.35rem, 4.25vw, 4.65rem);
+    line-height: 0.92;
   }
 
   .text-display {
-    font-size: clamp(2.25rem, 3.4vw, 4.25rem);
+    font-size: clamp(1.95rem, 2.75vw, 3.4rem);
+    line-height: 1.08;
   }
 
   .text-section {
-    font-size: clamp(1.9rem, 2.8vw, 3.15rem);
+    font-size: clamp(1.75rem, 2.35vw, 2.7rem);
+    line-height: 1.12;
   }
 
   /* Scroll-reveal base */
@@ -443,5 +446,39 @@
     height: 2px;
     background: linear-gradient(to right, var(--primary), var(--accent));
     opacity: 0.3;
+  }
+
+  @media (max-width: 767px) {
+    .animate-cinematic,
+    .animate-blob,
+    .animate-shimmer {
+      animation: none;
+    }
+
+    .animate-cinematic {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .animate-slide-up {
+      animation-duration: 0.45s;
+    }
+
+    .reveal {
+      opacity: 1;
+    }
+
+    .animate-in-scroll {
+      animation: none;
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .service-card:hover,
+    .portfolio-card:hover .card-img {
+      transform: none;
+    }
   }
 }

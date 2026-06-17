@@ -60,7 +60,7 @@ export default function Header({ lang, theme, onLangChange, onThemeChange }: Hea
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4">
       <nav
         className={`w-full max-w-7xl flex items-center justify-between px-4 py-2.5 rounded-2xl transition-all duration-500 ${
-          scrolled ? 'glass-light shadow-lg shadow-black/5' : 'bg-transparent'
+          scrolled ? 'glass-light shadow-lg shadow-black/5' : 'glass-light shadow-md shadow-black/5'
         }`}
       >
         {/* Logo */}

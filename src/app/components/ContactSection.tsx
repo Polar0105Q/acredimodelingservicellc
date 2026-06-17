@@ -129,20 +129,20 @@ export default function ContactSection({ lang }: ContactSectionProps) {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-24 md:py-32 bg-secondary relative overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 bg-secondary relative overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-96 h-96 blob-primary animate-blob pointer-events-none opacity-20" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 reveal">
+        <div className="text-center mb-10 md:mb-16 reveal">
           <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">
             {tx.label}
           </span>
           <h2 className="text-section font-display font-bold text-foreground mb-4">{tx.heading}</h2>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">{tx.sub}</p>
+          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">{tx.sub}</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
           {/* Contact info */}
           <div className="flex flex-col gap-5 reveal">
             {[
@@ -200,7 +200,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
           {/* Form */}
           <div className="lg:col-span-2 reveal">
             {submitted ? (
-              <div className="bg-card border border-border rounded-3xl p-12 flex flex-col items-center justify-center text-center min-h-[400px]">
+              <div className="bg-card border border-border rounded-3xl p-8 md:p-12 flex flex-col items-center justify-center text-center min-h-[320px] md:min-h-[400px]">
                 <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mb-6">
                   <Icon
                     name="CheckCircleIcon"
@@ -226,7 +226,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="bg-card border border-border rounded-3xl p-8 md:p-10 space-y-5"
+                className="bg-card border border-border rounded-3xl p-5 sm:p-8 md:p-10 space-y-5"
                 noValidate
               >
                 {error && (

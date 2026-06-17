@@ -87,20 +87,20 @@ export default function LocationsSection({ lang }: LocationsSectionProps) {
     <section
       id="locations"
       ref={sectionRef}
-      className="py-24 md:py-32 bg-background relative overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 reveal">
+        <div className="text-center mb-10 md:mb-16 reveal">
           <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">
             {tx.label}
           </span>
           <h2 className="text-section font-display font-bold text-foreground mb-4">{tx.heading}</h2>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">{tx.sub}</p>
+          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">{tx.sub}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Map placeholder */}
-          <div className="lg:col-span-2 relative rounded-3xl overflow-hidden min-h-[400px] reveal">
+          <div className="lg:col-span-2 relative rounded-3xl overflow-hidden min-h-[320px] sm:min-h-[380px] md:min-h-[400px] reveal">
             <div className="absolute inset-0 map-gradient" />
             {/* Grid overlay */}
             <div
@@ -149,11 +149,11 @@ export default function LocationsSection({ lang }: LocationsSectionProps) {
                   className="text-accent-foreground"
                 />
               </div>
-              <div>
+              <div className="min-w-0">
                 <span className="text-xs font-bold text-white uppercase tracking-wider">
                   South Florida Service Area
                 </span>
-                <span className="block text-xs text-white/60">
+                <span className="block text-xs text-white/60 truncate sm:whitespace-normal">
                   Miami-Dade · Broward · Palm Beach
                 </span>
               </div>

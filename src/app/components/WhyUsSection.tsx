@@ -124,40 +124,41 @@ export default function WhyUsSection({ lang }: WhyUsSectionProps) {
     <section
       id="why-us"
       ref={sectionRef}
-      className="py-24 md:py-32 bg-background relative overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden"
     >
       <div className="absolute top-0 left-0 w-96 h-96 blob-primary animate-blob pointer-events-none opacity-30" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left: Image + stats sticky companion */}
           <div className="relative reveal">
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/5]">
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] max-h-[620px]">
               <AppImage
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1976&auto=format&fit=crop"
                 alt={tx.imageAlt}
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={75}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>
 
             {/* Floating stat cards */}
-            <div className="absolute -bottom-6 -right-4 flex flex-col gap-3">
-              <div className="glass-light rounded-2xl px-5 py-4 shadow-xl">
-                <span className="block text-2xl font-display font-bold text-primary">
+            <div className="absolute bottom-3 right-3 sm:-bottom-6 sm:-right-4 flex flex-col gap-2 sm:gap-3 max-w-[70%] sm:max-w-none">
+              <div className="glass-light rounded-2xl px-4 sm:px-5 py-3 sm:py-4 shadow-xl">
+                <span className="block text-xl sm:text-2xl font-display font-bold text-primary">
                   {tx.stat1}
                 </span>
-                <span className="block text-xs uppercase tracking-wider text-muted-foreground mt-0.5">
+                <span className="block text-[0.65rem] sm:text-xs uppercase tracking-wider text-muted-foreground mt-0.5">
                   {tx.stat1l}
                 </span>
               </div>
-              <div className="glass-light rounded-2xl px-5 py-4 shadow-xl">
-                <span className="block text-2xl font-display font-bold text-accent-foreground">
+              <div className="glass-light rounded-2xl px-4 sm:px-5 py-3 sm:py-4 shadow-xl">
+                <span className="block text-xl sm:text-2xl font-display font-bold text-accent-foreground">
                   {tx.stat2}
                 </span>
-                <span className="block text-xs uppercase tracking-wider text-muted-foreground mt-0.5">
+                <span className="block text-[0.65rem] sm:text-xs uppercase tracking-wider text-muted-foreground mt-0.5">
                   {tx.stat2l}
                 </span>
               </div>
@@ -169,14 +170,14 @@ export default function WhyUsSection({ lang }: WhyUsSectionProps) {
 
           {/* Right: Reasons */}
           <div className="flex flex-col justify-between h-full">
-            <div className="mb-10 reveal">
+            <div className="mb-8 md:mb-10 reveal">
               <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">
                 {tx.label}
               </span>
               <h2 className="text-section font-display font-bold text-foreground mb-4">
                 {tx.heading}
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">{tx.sub}</p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{tx.sub}</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
