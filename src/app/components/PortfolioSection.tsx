@@ -11,109 +11,148 @@ interface PortfolioSectionProps {
 const t = {
   en: {
     label: 'Our Work',
-    heading: 'Transformations That Speak',
-    sub: 'Every project tells a story of craft, precision, and elevated living.',
-    filters: ['All', 'Kitchen', 'Bathroom', 'Living Spaces', 'Commercial'],
+    heading: 'Real Project Transformations',
+    sub: 'Before-and-after work from recent painting, carpentry, flooring, drywall, and exterior projects.',
+    filters: ['All', 'Carpentry', 'Painting', 'Kitchen', 'Bathroom', 'Exterior'],
     before: 'Before',
     after: 'After',
-    viewAll: 'View All Projects',
+    viewAll: 'Start Your Project',
+    homeLabel: 'Featured Home Project',
+    homeHeading: 'Wood Interior Home Refresh',
+    homeSub:
+      'A warm residential project featuring wood ceilings, stairs, railing details, flooring, and bright interior finishes.',
   },
   es: {
     label: 'Nuestro Trabajo',
-    heading: 'Transformaciones que Hablan',
-    sub: 'Cada proyecto cuenta una historia de artesanía, precisión y vida elevada.',
-    filters: ['Todo', 'Cocinas', 'Baños', 'Salas', 'Comercial'],
+    heading: 'Transformaciones Reales',
+    sub: 'Antes y despues de trabajos recientes de pintura, carpinteria, pisos, drywall y exterior.',
+    filters: ['Todo', 'Carpinteria', 'Pintura', 'Cocina', 'Bano', 'Exterior'],
     before: 'Antes',
-    after: 'Después',
-    viewAll: 'Ver Todos los Proyectos',
+    after: 'Despues',
+    viewAll: 'Iniciar Proyecto',
+    homeLabel: 'Proyecto Casa',
+    homeHeading: 'Renovacion Interior en Madera',
+    homeSub:
+      'Proyecto residencial con cielos en madera, escaleras, barandas, pisos y acabados interiores luminosos.',
   },
 };
 
 const projects = [
   {
     id: 1,
-    category: 'Kitchen',
-    title: "Modern Chef's Kitchen",
-    location: 'Coral Gables, FL',
-    value: '$85,000',
-    before: 'https://img.rocket.new/generatedImages/rocket_gen_img_18ded5bf4-1764766015972.png',
-    after: 'https://img.rocket.new/generatedImages/rocket_gen_img_18ded5bf4-1764766015972.png',
-    beforeAlt:
-      'Outdated kitchen with worn cabinets, old appliances, and poor lighting before renovation',
-    afterAlt:
-      'Stunning modern kitchen with white marble countertops, custom navy cabinetry, and gold fixtures after renovation',
-    span: 'lg:col-span-2 lg:row-span-2',
+    category: 'Painting',
+    title: 'Built-In Cabinet Painting',
+    detail: 'Interior Painting',
+    before: '/assets/images/projects/built-in-cabinet-before.webp',
+    after: '/assets/images/projects/built-in-cabinet-after.webp',
+    beforeAlt: 'Dark built-in cabinet before interior painting',
+    afterAlt: 'Blue painted built-in cabinet after interior painting',
     featured: true,
   },
   {
     id: 2,
-    category: 'Bathroom',
-    title: 'Spa Master Bath',
-    location: 'Brickell, FL',
-    value: '$42,000',
-    before: 'https://img.rocket.new/generatedImages/rocket_gen_img_10d1c45f5-1769307617185.png',
-    after: 'https://img.rocket.new/generatedImages/rocket_gen_img_10d1c45f5-1769307617185.png',
-    beforeAlt: 'Small dated bathroom with old tiles and cramped layout before renovation',
-    afterAlt:
-      'Luxurious spa-inspired master bathroom with rainfall shower and marble tiles after renovation',
-    span: '',
+    category: 'Carpentry',
+    title: 'Wall Unit Finish Refresh',
+    detail: 'Finish Carpentry',
+    before: '/assets/images/projects/wall-unit-before.webp',
+    after: '/assets/images/projects/wall-unit-after.webp',
+    beforeAlt: 'Dark wood wall unit before finish update',
+    afterAlt: 'White wall unit after finish carpentry and painting',
     featured: false,
   },
   {
     id: 3,
-    category: 'Living Spaces',
-    title: 'Open-Concept Living',
-    location: 'Miami Beach, FL',
-    value: '$120,000',
-    before: 'https://img.rocket.new/generatedImages/rocket_gen_img_19b5be177-1772213829137.png',
-    after: 'https://img.rocket.new/generatedImages/rocket_gen_img_19b5be177-1772213829137.png',
-    beforeAlt: 'Closed-off living room with dark walls and separated spaces before renovation',
-    afterAlt:
-      'Bright open-concept living area with white walls, modern furniture, and abundant natural light after renovation',
-    span: '',
+    category: 'Painting',
+    title: 'Interior Railing Update',
+    detail: 'Interior Painting',
+    before: '/assets/images/projects/railing-before.webp',
+    after: '/assets/images/projects/railing-after.webp',
+    beforeAlt: 'Dark interior railing before painting',
+    afterAlt: 'Freshly painted interior railing after update',
     featured: false,
   },
   {
     id: 4,
-    category: 'Commercial',
-    title: 'Boutique Office Suite',
-    location: 'Wynwood, FL',
-    value: '$200,000',
-    before: 'https://img.rocket.new/generatedImages/rocket_gen_img_100e3645c-1777460012009.png',
-    after: 'https://img.rocket.new/generatedImages/rocket_gen_img_100e3645c-1777460012009.png',
-    beforeAlt: 'Empty commercial office space with bare walls and old flooring before renovation',
-    afterAlt:
-      'Modern boutique office with glass partitions, custom millwork, and designer lighting after renovation',
-    span: '',
+    category: 'Kitchen',
+    title: 'Kitchen Cabinet Finish',
+    detail: 'Cabinet Painting',
+    before: '/assets/images/projects/kitchen-cabinet-before.webp',
+    after: '/assets/images/projects/kitchen-cabinet-after.webp',
+    beforeAlt: 'Kitchen cabinets before painting',
+    afterAlt: 'Green kitchen cabinets after painting and finish work',
     featured: false,
   },
   {
     id: 5,
-    category: 'Kitchen',
-    title: 'Coastal Kitchen Refresh',
-    location: 'Key Biscayne, FL',
-    value: '$55,000',
-    before: 'https://img.rocket.new/generatedImages/rocket_gen_img_199ccac9a-1772118176011.png',
-    after: 'https://img.rocket.new/generatedImages/rocket_gen_img_199ccac9a-1772118176011.png',
-    beforeAlt: 'Old kitchen with dark wood and limited counter space before renovation',
-    afterAlt:
-      'Coastal-inspired kitchen with white shaker cabinets, quartz counters, and subway tile after renovation',
-    span: '',
+    category: 'Bathroom',
+    title: 'Shower Wall Upgrade',
+    detail: 'Drywall & Finishing',
+    before: '/assets/images/projects/shower-before.webp',
+    after: '/assets/images/projects/shower-after.webp',
+    beforeAlt: 'Shower area before wall finish installation',
+    afterAlt: 'Finished shower wall after installation and finishing',
     featured: false,
+  },
+  {
+    id: 6,
+    category: 'Exterior',
+    title: 'Exterior Door Installation',
+    detail: 'Exterior Finish Work',
+    before: '/assets/images/projects/exterior-door-before.webp',
+    after: '/assets/images/projects/exterior-door-after.webp',
+    beforeAlt: 'Exterior wall opening before door installation',
+    afterAlt: 'Exterior double door after installation and trim work',
+    featured: false,
+  },
+];
+
+const homeProjectImages = [
+  {
+    src: '/assets/images/projects/home-project-1.webp',
+    alt: 'Residential wood interior hallway with windows and flooring',
+  },
+  {
+    src: '/assets/images/projects/home-project-2.webp',
+    alt: 'Wood staircase and interior finish details',
+  },
+  {
+    src: '/assets/images/projects/home-project-3.webp',
+    alt: 'Open residential interior with wood ceiling and staircase',
+  },
+  {
+    src: '/assets/images/projects/home-project-4.webp',
+    alt: 'Finished wooden stairs with wall handrail',
+  },
+  {
+    src: '/assets/images/projects/home-project-5.webp',
+    alt: 'Bright living space with wood ceiling and tall windows',
+  },
+  {
+    src: '/assets/images/projects/home-project-6.webp',
+    alt: 'Residential interior view with staircase and wood finishes',
+  },
+  {
+    src: '/assets/images/projects/home-project-7.webp',
+    alt: 'Wood ceiling living room with large windows and natural light',
+  },
+  {
+    src: '/assets/images/projects/home-project-8.webp',
+    alt: 'Upper railing and wood ceiling detail in finished home project',
   },
 ];
 
 const filterMap: Record<string, string> = {
   All: 'All',
   Todo: 'All',
+  Carpentry: 'Carpentry',
+  Carpinteria: 'Carpentry',
+  Painting: 'Painting',
+  Pintura: 'Painting',
   Kitchen: 'Kitchen',
-  Cocinas: 'Kitchen',
+  Cocina: 'Kitchen',
   Bathroom: 'Bathroom',
-  Baños: 'Bathroom',
-  'Living Spaces': 'Living Spaces',
-  Salas: 'Living Spaces',
-  Commercial: 'Commercial',
-  Comercial: 'Commercial',
+  Bano: 'Bathroom',
+  Exterior: 'Exterior',
 };
 
 export default function PortfolioSection({ lang }: PortfolioSectionProps) {
@@ -158,7 +197,6 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
       <div className="absolute bottom-0 left-0 w-96 h-96 blob-accent animate-blob pointer-events-none opacity-30" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-12 gap-6 reveal">
           <div>
             <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">
@@ -175,7 +213,6 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
           </a>
         </div>
 
-        {/* Filter tabs */}
         <div className="flex flex-wrap gap-2 mb-10 reveal">
           {tx.filters.map((filter) => (
             <button
@@ -192,12 +229,6 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
           ))}
         </div>
 
-        {/* Portfolio grid */}
-        {/* BENTO AUDIT (filtered=All, 5 cards):
-           Row 1: [col-1-2: Kitchen cs-2 rs-2 (featured)] [col-3: Bathroom cs-1] [col-4: Living cs-1]
-           Row 2: [col-1-2: Kitchen CONTINUED]             [col-3: Commercial cs-1] [col-4: CoastalKitchen cs-1]
-           Placed 5/5 cards ✓
-          */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {filtered.map((project, idx) => {
             const isFeatured = project.featured && filtered.length > 2;
@@ -210,13 +241,10 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                     ? 'min-h-[360px] lg:min-h-[480px] lg:col-span-2 lg:row-span-2'
                     : 'min-h-[260px] lg:min-h-[280px]'
                 }`}
-                style={{
-                  transitionDelay: `${idx * 80}ms`,
-                }}
+                style={{ transitionDelay: `${idx * 80}ms` }}
                 onMouseEnter={() => setHoveredId(project.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                {/* Before/After toggle */}
                 <div className="absolute inset-0 w-full h-full">
                   <AppImage
                     src={hoveredId === project.id ? project.after : project.before}
@@ -224,13 +252,12 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                     fill
                     className="card-img object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    quality={75}
+                    quality={78}
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                 </div>
 
-                {/* Before/After badge */}
                 <div className="absolute top-4 left-4 flex gap-2">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
@@ -243,7 +270,6 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                   </span>
                 </div>
 
-                {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <span className="text-xs uppercase tracking-widest text-accent font-semibold">
                     {project.category}
@@ -251,31 +277,62 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                   <h3 className="text-lg font-display font-bold text-white mt-1">
                     {project.title}
                   </h3>
-                  <div className="flex items-center justify-between mt-2">
-                    <span className="min-w-0 text-sm text-white/60 flex items-center gap-1">
-                      <Icon name="MapPinIcon" size={12} variant="outline" />
-                      <span className="truncate">{project.location}</span>
-                    </span>
-                    <span className="shrink-0 text-sm font-semibold text-accent">
-                      {project.value}
-                    </span>
+                  <div className="mt-2 flex items-center gap-1 text-sm text-white/65">
+                    <Icon name="TagIcon" size={12} variant="outline" />
+                    <span>{project.detail}</span>
                   </div>
                 </div>
 
-                {/* Hover hint */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex flex-col items-center gap-2 text-white">
                     <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
                       <Icon name="ArrowsRightLeftIcon" size={20} variant="outline" />
                     </div>
                     <span className="text-xs font-medium">
-                      {tx.before} → {tx.after}
+                      {tx.before} / {tx.after}
                     </span>
                   </div>
                 </div>
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-16 md:mt-20 reveal">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+            <div>
+              <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">
+                {tx.homeLabel}
+              </span>
+              <h3 className="text-section font-display font-bold text-foreground">
+                {tx.homeHeading}
+              </h3>
+              <p className="text-base md:text-lg text-muted-foreground mt-3 max-w-2xl">
+                {tx.homeSub}
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {homeProjectImages.map((image, i) => (
+              <div
+                key={image.src}
+                className={`relative overflow-hidden rounded-2xl bg-card border border-border reveal ${
+                  i === 0 || i === 4 ? 'aspect-[3/4]' : 'aspect-[4/5]'
+                }`}
+                style={{ transitionDelay: `${i * 60}ms` }}
+              >
+                <AppImage
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  quality={78}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
