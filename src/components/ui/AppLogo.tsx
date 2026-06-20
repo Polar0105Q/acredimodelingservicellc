@@ -33,7 +33,7 @@ const AppLogo = memo(function AppLogo({
       {src ? (
         <AppImage
           src={src}
-          alt="Remodeling Service LLC logo"
+          alt="AC Remodeling Service LLC logo"
           width={size}
           height={size}
           className="flex-shrink-0"

@@ -10,24 +10,11 @@ interface LocationsSectionProps {
 const t = {
   en: {
     label: 'Where We Work',
-    heading: 'Serving South Florida',
-    sub: 'Licensed and operating across Miami-Dade, Broward, and Palm Beach counties.',
-    areas: [
-      'Miami / Brickell',
-      'Coral Gables',
-      'Miami Beach',
-      'Coconut Grove',
-      'Wynwood',
-      'Key Biscayne',
-      'Aventura',
-      'Fort Lauderdale',
-      'Doral',
-      'Kendall',
-      'Homestead',
-      'Palm Beach',
-    ],
-    office: 'Main Office',
-    address: '1200 Brickell Ave, Suite 400\nMiami, FL 33131',
+    heading: 'Serving the High Country & Foothills',
+    sub: 'Established in 2019 and fully insured for residential finish work across our local service area.',
+    areas: ['Sugar Mountain', 'Blowing Rock', 'Boone', 'Hickory', 'Morganton', 'Lenoir'],
+    office: 'Service Area',
+    address: 'Sugar Mountain · Blowing Rock · Boone\nHickory · Morganton · Lenoir',
     phone: '(305) 555-0192',
     email: 'info@remodelingservicellc.com',
     hours: 'Mon–Fri: 8AM–6PM\nSat: 9AM–3PM',
@@ -35,24 +22,11 @@ const t = {
   },
   es: {
     label: 'Dónde Trabajamos',
-    heading: 'Sirviendo el Sur de Florida',
-    sub: 'Licenciados y operando en los condados Miami-Dade, Broward y Palm Beach.',
-    areas: [
-      'Miami / Brickell',
-      'Coral Gables',
-      'Miami Beach',
-      'Coconut Grove',
-      'Wynwood',
-      'Key Biscayne',
-      'Aventura',
-      'Fort Lauderdale',
-      'Doral',
-      'Kendall',
-      'Homestead',
-      'Palm Beach',
-    ],
-    office: 'Oficina Principal',
-    address: '1200 Brickell Ave, Suite 400\nMiami, FL 33131',
+    heading: 'Sirviendo High Country y Foothills',
+    sub: 'Establecidos desde 2019 y totalmente asegurados para trabajos residenciales de acabado.',
+    areas: ['Sugar Mountain', 'Blowing Rock', 'Boone', 'Hickory', 'Morganton', 'Lenoir'],
+    office: 'Area de Servicio',
+    address: 'Sugar Mountain · Blowing Rock · Boone\nHickory · Morganton · Lenoir',
     phone: '(305) 555-0192',
     email: 'info@remodelingservicellc.com',
     hours: 'Lun–Vie: 8AM–6PM\nSáb: 9AM–3PM',
@@ -99,26 +73,33 @@ export default function LocationsSection({ lang }: LocationsSectionProps) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Map placeholder */}
+          {/* Service area map */}
           <div className="lg:col-span-2 relative rounded-3xl overflow-hidden min-h-[320px] sm:min-h-[380px] md:min-h-[400px] reveal">
             <div className="absolute inset-0 map-gradient" />
             {/* Grid overlay */}
             <div
-              className="absolute inset-0 opacity-10"
+              className="absolute inset-0 opacity-25"
               style={{
                 backgroundImage:
-                  'linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)',
-                backgroundSize: '40px 40px',
+                  'radial-gradient(circle at 20% 30%, rgba(255,190,0,0.18), transparent 24%), radial-gradient(circle at 80% 70%, rgba(17,17,17,0.18), transparent 28%), linear-gradient(rgba(17,17,17,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(17,17,17,0.08) 1px, transparent 1px)',
+                backgroundSize: '100% 100%, 100% 100%, 42px 42px, 42px 42px',
+              }}
+            />
+            <div
+              className="absolute inset-0 opacity-30"
+              style={{
+                backgroundImage:
+                  'repeating-radial-gradient(ellipse at 35% 45%, transparent 0 28px, rgba(17,17,17,0.12) 29px 30px)',
               }}
             />
             {/* Service area dots */}
             {[
-              { top: '30%', left: '45%', label: 'Miami' },
-              { top: '20%', left: '55%', label: 'Miami Beach' },
-              { top: '45%', left: '40%', label: 'Coral Gables' },
-              { top: '15%', left: '48%', label: 'Aventura' },
-              { top: '60%', left: '43%', label: 'Kendall' },
-              { top: '10%', left: '52%', label: 'Fort Lauderdale' },
+              { top: '22%', left: '36%', label: 'Sugar Mountain' },
+              { top: '34%', left: '48%', label: 'Boone' },
+              { top: '40%', left: '58%', label: 'Blowing Rock' },
+              { top: '58%', left: '70%', label: 'Lenoir' },
+              { top: '70%', left: '54%', label: 'Hickory' },
+              { top: '78%', left: '38%', label: 'Morganton' },
             ].map((dot) => (
               <div
                 key={dot.label}
@@ -126,22 +107,22 @@ export default function LocationsSection({ lang }: LocationsSectionProps) {
                 style={{ top: dot.top, left: dot.left, transform: 'translate(-50%, -50%)' }}
               >
                 <div className="w-3 h-3 rounded-full bg-accent shadow-lg shadow-accent/50 animate-pulse" />
-                <span className="text-xs text-white/80 font-medium bg-black/30 px-2 py-0.5 rounded-full backdrop-blur-sm">
+                <span className="text-xs text-foreground font-semibold bg-white/75 border border-black/10 px-2 py-0.5 rounded-full backdrop-blur-sm shadow-sm">
                   {dot.label}
                 </span>
               </div>
             ))}
-            {/* Main office marker */}
+            {/* Main service marker */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-white shadow-xl flex items-center justify-center">
-                <div className="w-3 h-3 rounded-full bg-primary" />
+              <div className="w-7 h-7 rounded-full bg-foreground shadow-xl flex items-center justify-center ring-4 ring-white/50">
+                <div className="w-3 h-3 rounded-full bg-accent" />
               </div>
-              <span className="text-xs text-white font-bold bg-primary px-3 py-1 rounded-full">
-                HQ
+              <span className="text-xs text-background font-bold bg-foreground px-3 py-1 rounded-full">
+                EST. 2019
               </span>
             </div>
             <div className="absolute bottom-4 left-4 right-4 glass-card rounded-2xl p-4 flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-accent flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-accent flex items-center justify-center shadow-sm">
                 <Icon
                   name="MapPinIcon"
                   size={16}
@@ -151,10 +132,10 @@ export default function LocationsSection({ lang }: LocationsSectionProps) {
               </div>
               <div className="min-w-0">
                 <span className="text-xs font-bold text-white uppercase tracking-wider">
-                  South Florida Service Area
+                  Service Area
                 </span>
                 <span className="block text-xs text-white/60 truncate sm:whitespace-normal">
-                  Miami-Dade · Broward · Palm Beach
+                  Sugar Mountain · Blowing Rock · Boone · Hickory · Morganton · Lenoir
                 </span>
               </div>
             </div>

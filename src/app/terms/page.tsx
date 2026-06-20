@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Terms - Remodeling Service LLC',
-  description: 'Website terms for Remodeling Service LLC.',
+  title: 'Terms - AC Remodeling Service LLC',
+  description: 'Website terms for AC Remodeling Service LLC.',
 };
 
 export default function TermsPage() {
@@ -16,7 +16,7 @@ export default function TermsPage() {
         <p className="mt-6 text-muted-foreground leading-relaxed">
           The information on this website is provided for general remodeling service inquiries.
           Project estimates, timelines, warranties, and availability are confirmed only in written
-          agreements with Remodeling Service LLC.
+          agreements with AC Remodeling Service LLC.
         </p>
         <p className="mt-4 text-muted-foreground leading-relaxed">
           Use of this website does not create a contractor-client relationship until a written

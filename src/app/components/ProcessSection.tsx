@@ -38,7 +38,7 @@ const t = {
         num: '04',
         icon: 'WrenchScrewdriverIcon',
         title: 'Construction',
-        desc: 'Our licensed crews execute with precision. Daily progress updates and site cleanliness guaranteed.',
+        desc: 'Our insured crews execute with precision. Daily progress updates and site cleanliness guaranteed.',
         duration: 'Per scope',
       },
       {
@@ -80,7 +80,7 @@ const t = {
         num: '04',
         icon: 'WrenchScrewdriverIcon',
         title: 'Construcción',
-        desc: 'Nuestros equipos licenciados ejecutan con precisión. Actualizaciones diarias garantizadas.',
+        desc: 'Nuestros equipos asegurados ejecutan con precisión. Actualizaciones diarias garantizadas.',
         duration: 'Por alcance',
       },
       {

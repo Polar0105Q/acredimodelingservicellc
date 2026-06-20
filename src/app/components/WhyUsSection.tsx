@@ -21,8 +21,8 @@ const t = {
       },
       {
         icon: 'ShieldCheckIcon',
-        title: 'Licensed & Insured',
-        desc: 'Fully licensed contractors with $5M liability coverage. Your investment is protected from day one.',
+        title: 'Fully Insured',
+        desc: 'Fully insured project support with coverage-minded planning. Your investment is protected from day one.',
       },
       {
         icon: 'BanknotesIcon',
@@ -64,8 +64,8 @@ const t = {
       },
       {
         icon: 'ShieldCheckIcon',
-        title: 'Licenciado y Asegurado',
-        desc: 'Contratistas completamente licenciados con $5M de cobertura de responsabilidad.',
+        title: 'Totalmente Asegurados',
+        desc: 'Soporte de proyecto totalmente asegurado con planificacion enfocada en proteger tu inversion.',
       },
       {
         icon: 'BanknotesIcon',

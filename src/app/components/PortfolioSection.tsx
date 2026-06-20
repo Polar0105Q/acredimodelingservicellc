@@ -21,9 +21,9 @@ const t = {
     compareAction: 'See after',
     viewAll: 'Start Your Project',
     homeLabel: 'Featured Home Project',
-    homeHeading: 'Wood Interior Home Refresh',
+    homeHeading: 'T&G Ceiling Home Refresh',
     homeSub:
-      'A warm residential project featuring wood ceilings, stairs, railing details, flooring, and bright interior finishes.',
+      'A warm residential project featuring Tongue & Groove ceilings, stairs, railing details, flooring, and bright interior finishes.',
   },
   es: {
     label: 'Nuestro Trabajo',
@@ -36,9 +36,9 @@ const t = {
     compareAction: 'Ver despues',
     viewAll: 'Iniciar Proyecto',
     homeLabel: 'Proyecto Casa',
-    homeHeading: 'Renovacion Interior en Madera',
+    homeHeading: 'Renovacion con T&G Ceiling',
     homeSub:
-      'Proyecto residencial con cielos en madera, escaleras, barandas, pisos y acabados interiores luminosos.',
+      'Proyecto residencial con Tongue & Groove / T&G Ceiling, escaleras, barandas, pisos y acabados interiores luminosos.',
   },
 };
 
@@ -114,7 +114,7 @@ const projects = [
 const homeProjectImages = [
   {
     src: '/assets/images/projects/home-project-1.webp',
-    alt: 'Residential wood interior hallway with windows and flooring',
+    alt: 'Residential interior hallway with Tongue and Groove ceiling detail and flooring',
   },
   {
     src: '/assets/images/projects/home-project-2.webp',
@@ -122,7 +122,7 @@ const homeProjectImages = [
   },
   {
     src: '/assets/images/projects/home-project-3.webp',
-    alt: 'Open residential interior with wood ceiling and staircase',
+    alt: 'Open residential interior with T&G ceiling and staircase',
   },
   {
     src: '/assets/images/projects/home-project-4.webp',
@@ -130,7 +130,7 @@ const homeProjectImages = [
   },
   {
     src: '/assets/images/projects/home-project-5.webp',
-    alt: 'Bright living space with wood ceiling and tall windows',
+    alt: 'Bright living space with Tongue and Groove ceiling and tall windows',
   },
   {
     src: '/assets/images/projects/home-project-6.webp',
@@ -138,11 +138,11 @@ const homeProjectImages = [
   },
   {
     src: '/assets/images/projects/home-project-7.webp',
-    alt: 'Wood ceiling living room with large windows and natural light',
+    alt: 'T&G ceiling living room with large windows and natural light',
   },
   {
     src: '/assets/images/projects/home-project-8.webp',
-    alt: 'Upper railing and wood ceiling detail in finished home project',
+    alt: 'Upper railing and Tongue and Groove ceiling detail in finished home project',
   },
 ];
 

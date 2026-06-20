@@ -11,7 +11,7 @@ interface CTASectionProps {
 const t = {
   en: {
     heading: 'Ready to Transform Your Space?',
-    sub: 'Join 1,200+ homeowners and businesses who chose Remodeling Service LLC for their most important projects.',
+    sub: 'Join 1,200+ homeowners and businesses who chose AC Remodeling Service LLC for their most important projects.',
     cta: 'Request Your Free Estimate Today',
     call: 'Or call us directly',
     phone: '(305) 555-0192',
@@ -19,7 +19,7 @@ const t = {
   },
   es: {
     heading: '¿Listo para Transformar Tu Espacio?',
-    sub: 'Únete a más de 1,200 propietarios y negocios que eligieron Remodeling Service LLC.',
+    sub: 'Únete a más de 1,200 propietarios y negocios que eligieron AC Remodeling Service LLC.',
     cta: 'Solicita Tu Estimado Gratis Hoy',
     call: 'O llámanos directamente',
     phone: '(305) 555-0192',

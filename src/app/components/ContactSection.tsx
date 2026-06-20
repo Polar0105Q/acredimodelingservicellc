@@ -34,7 +34,7 @@ const t = {
     info: {
       phone: '(305) 555-0192',
       email: 'info@remodelingservicellc.com',
-      address: '1200 Brickell Ave, Suite 400\nMiami, FL 33131',
+      address: 'Sugar Mountain · Blowing Rock · Boone\nHickory · Morganton · Lenoir',
       hours: 'Mon–Fri: 8AM–6PM · Sat: 9AM–3PM',
     },
   },
@@ -66,7 +66,7 @@ const t = {
     info: {
       phone: '(305) 555-0192',
       email: 'info@remodelingservicellc.com',
-      address: '1200 Brickell Ave, Suite 400\nMiami, FL 33131',
+      address: 'Sugar Mountain · Blowing Rock · Boone\nHickory · Morganton · Lenoir',
       hours: 'Lun–Vie: 8AM–6PM · Sáb: 9AM–3PM',
     },
   },
@@ -179,9 +179,9 @@ export default function ContactSection({ lang }: ContactSectionProps) {
               },
               {
                 icon: 'MapPinIcon',
-                label: 'Address',
+                label: lang === 'en' ? 'Service Area' : 'Area de Servicio',
                 value: tx.info.address,
-                href: 'https://www.google.com/maps/search/?api=1&query=1200%20Brickell%20Ave%20Suite%20400%20Miami%20FL%2033131',
+                href: 'https://www.google.com/maps/search/?api=1&query=Boone%20NC%20Blowing%20Rock%20NC%20Sugar%20Mountain%20NC',
               },
               { icon: 'ClockIcon', label: 'Hours', value: tx.info.hours },
             ].map((item, i) => (

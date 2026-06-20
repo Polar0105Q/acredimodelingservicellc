@@ -65,9 +65,11 @@ export default function Header({ lang, theme, onLangChange, onThemeChange }: Hea
       >
         {/* Logo */}
         <Link href="#hero" className="flex min-w-0 items-center gap-2">
-          <AppLogo size={36} />
+          <span className="rounded-xl bg-accent/90 p-1 shadow-sm ring-1 ring-black/10">
+            <AppLogo src="/assets/images/ac-remodeling-logo.png" size={34} />
+          </span>
           <span className="block max-w-[8.25rem] truncate font-display text-[0.9rem] font-semibold tracking-tight text-foreground sm:max-w-none sm:text-lg">
-            Remodeling Service
+            AC Remodeling
             <span className="text-accent font-bold"> LLC</span>
             <sup className="text-xs text-muted-foreground">®</sup>
           </span>

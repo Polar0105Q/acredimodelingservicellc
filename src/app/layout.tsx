@@ -24,16 +24,20 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'Remodeling Service LLC - Premium Home & Commercial Remodeling',
+  title: 'AC Remodeling Service LLC - Premium Residential Remodeling',
   description:
-    'Remodeling Service LLC delivers premium kitchen, bathroom, and commercial remodeling across South Florida with licensed professionals, transparent pricing, and warranty-backed results.',
+    'AC Remodeling Service LLC delivers insured residential remodeling and finish work across Sugar Mountain, Blowing Rock, Boone, Hickory, Morganton, and Lenoir.',
   keywords: [
     'remodeling contractor',
     'kitchen remodeling',
     'bathroom remodeling',
     'home renovation',
     'commercial remodeling',
-    'South Florida remodeling',
+    'Sugar Mountain remodeling',
+    'Boone remodeling',
+    'Blowing Rock remodeling',
+    'T&G ceilings',
+    'Tongue and Groove ceilings',
   ],
   alternates: {
     canonical: '/',
@@ -42,10 +46,10 @@ export const metadata: Metadata = {
     icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
   },
   openGraph: {
-    title: 'Remodeling Service LLC - Premium Remodeling',
+    title: 'AC Remodeling Service LLC - Premium Remodeling',
     description:
-      'Premium remodeling for homes and businesses. Licensed professionals, transparent pricing.',
-    images: [{ url: '/assets/images/app_logo.svg', width: 128, height: 128 }],
+      'Insured remodeling and finish work for Sugar Mountain, Blowing Rock, Boone, Hickory, Morganton, and Lenoir.',
+    images: [{ url: '/assets/images/ac-remodeling-logo.png', width: 532, height: 532 }],
     type: 'website',
   },
 };

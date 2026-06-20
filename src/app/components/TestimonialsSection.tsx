@@ -26,48 +26,47 @@ const testimonials = [
     name: 'Jennifer Castillo',
     role: 'Homeowner',
     roleEs: 'Propietaria',
-    location: 'Coral Gables, FL',
+    location: 'Boone, NC',
     rating: 5,
     quote:
       'Our kitchen went from a 1980s eyesore to the most beautiful room in the house. The team was professional, clean, and finished 3 days early. The quality is exceptional — every detail was considered.',
     quoteEs:
       'Nuestra cocina pasó de ser un desastre de los 80 a la habitación más hermosa de la casa. El equipo fue profesional, limpio y terminó 3 días antes. La calidad es excepcional.',
     img: 'https://img.rocket.new/generatedImages/rocket_gen_img_12c225ba7-1772167478205.png',
-    imgAlt:
-      'Jennifer Castillo, a smiling woman in her 40s with dark hair, homeowner in Coral Gables',
+    imgAlt: 'Jennifer Castillo, a smiling woman in her 40s with dark hair, homeowner in Boone',
     project: 'Full Kitchen Remodel',
-    value: '$82,000',
+    value: 'Residential',
   },
   {
     name: 'Marcus Thompson',
     role: 'Business Owner',
     roleEs: 'Empresario',
-    location: 'Brickell, FL',
+    location: 'Hickory, NC',
     rating: 5,
     quote:
       'They transformed our 4,000 sq ft office into a modern workspace that our team loves. Stayed on budget, on time, and the communication was outstanding throughout the entire project.',
     quoteEs:
       'Transformaron nuestra oficina de 4,000 sq ft en un espacio moderno que nuestro equipo ama. Cumplieron con el presupuesto, el tiempo y la comunicación fue excelente.',
     img: 'https://img.rocket.new/generatedImages/rocket_gen_img_16d40406a-1763299635779.png',
-    imgAlt:
-      'Marcus Thompson, a professional man in his 50s in a suit, business owner in Brickell Miami',
+    imgAlt: 'Marcus Thompson, a professional man in his 50s in a suit, business owner in Hickory',
     project: 'Commercial Office Buildout',
-    value: '$195,000',
+    value: 'Commercial',
   },
   {
     name: 'Sofia Reyes',
     role: 'Interior Designer',
     roleEs: 'Diseñadora de Interiores',
-    location: 'Miami Beach, FL',
+    location: 'Blowing Rock, NC',
     rating: 5,
     quote:
       'I recommend Remodeling Service to all my clients. Their craftsmanship is flawless and they execute my designs exactly as intended. The 5-year warranty gives my clients complete peace of mind.',
     quoteEs:
       'Recomiendo Remodeling Service a todos mis clientes. Su artesanía es impecable y ejecutan mis diseños exactamente como se pretende. La garantía de 5 años da tranquilidad total.',
     img: 'https://img.rocket.new/generatedImages/rocket_gen_img_10bbbf135-1763294543564.png',
-    imgAlt: 'Sofia Reyes, a young Latina woman with a warm smile, interior designer in Miami Beach',
+    imgAlt:
+      'Sofia Reyes, a young Latina woman with a warm smile, interior designer in Blowing Rock',
     project: 'Master Bath + Living Room',
-    value: '$67,000',
+    value: 'Interior Finish',
   },
 ];
 

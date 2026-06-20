@@ -25,8 +25,8 @@ const t = {
     contact: 'Contact',
     privacy: 'Privacy',
     terms: 'Terms',
-    copyright: '© 2026 Remodeling Service LLC®. All rights reserved.',
-    serviceArea: 'Serving all of South Florida',
+    copyright: '© 2026 AC Remodeling Service LLC®. All rights reserved.',
+    serviceArea: 'Serving Sugar Mountain, Blowing Rock, Boone, Hickory, Morganton, and Lenoir',
   },
   es: {
     tagline: 'Transformando espacios en experiencias excepcionales.',
@@ -46,8 +46,8 @@ const t = {
     contact: 'Contacto',
     privacy: 'Privacidad',
     terms: 'Terminos',
-    copyright: '© 2026 Remodeling Service LLC®. Todos los derechos reservados.',
-    serviceArea: 'Servicio en todo el sur de Florida',
+    copyright: '© 2026 AC Remodeling Service LLC®. Todos los derechos reservados.',
+    serviceArea: 'Servicio en Sugar Mountain, Blowing Rock, Boone, Hickory, Morganton y Lenoir',
   },
 };
 
@@ -72,11 +72,11 @@ export default function Footer({ lang }: FooterProps) {
               href="#hero"
               className="group inline-flex items-center gap-2.5 mb-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/60"
             >
-              <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105">
-                <AppLogo size={36} />
+              <span className="rounded-xl bg-accent/95 p-1 shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105">
+                <AppLogo src="/assets/images/ac-remodeling-logo.png" size={36} />
               </span>
               <span className="font-display font-semibold text-lg tracking-tight text-background transition-colors duration-300 group-hover:text-white">
-                Remodeling Service
+                AC Remodeling
                 <span className="text-accent font-bold"> LLC</span>
                 <sup className="text-xs opacity-60">®</sup>
               </span>
@@ -164,7 +164,7 @@ export default function Footer({ lang }: FooterProps) {
                   className="mt-0.5 shrink-0 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110"
                 />
                 <span>
-                  Miami, FL 33101
+                  High Country & Foothills
                   <br />
                   {tx.serviceArea}
                 </span>

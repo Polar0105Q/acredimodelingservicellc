@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Privacy Policy - Remodeling Service LLC',
-  description: 'Privacy policy for Remodeling Service LLC.',
+  title: 'Privacy Policy - AC Remodeling Service LLC',
+  description: 'Privacy policy for AC Remodeling Service LLC.',
 };
 
 export default function PrivacyPage() {
@@ -14,7 +14,7 @@ export default function PrivacyPage() {
         </Link>
         <h1 className="mt-8 font-display text-4xl font-bold">Privacy Policy</h1>
         <p className="mt-6 text-muted-foreground leading-relaxed">
-          Remodeling Service LLC collects only the contact information you submit through this
+          AC Remodeling Service LLC collects only the contact information you submit through this
           website so we can respond to project inquiries. We do not sell personal information.
         </p>
         <p className="mt-4 text-muted-foreground leading-relaxed">

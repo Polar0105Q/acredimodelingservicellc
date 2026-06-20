@@ -10,7 +10,7 @@ interface HeroSectionProps {
 
 const t = {
   en: {
-    badge: 'Est. 2008 · Licensed & Insured',
+    badge: 'Est. 2019 · Fully Insured',
     headline1: 'TRANSFORM',
     headline2: 'SPACES',
     sub: 'Premium remodeling solutions for homes and businesses with craftsmanship, innovation, and attention to detail.',
@@ -25,7 +25,7 @@ const t = {
     scroll: 'Scroll',
   },
   es: {
-    badge: 'Est. 2008 · Licenciado y Asegurado',
+    badge: 'Est. 2019 · Totalmente Asegurados',
     headline1: 'TRANSFORMA',
     headline2: 'ESPACIOS',
     sub: 'Soluciones premium de remodelación para hogares y negocios con artesanía, innovación y atención al detalle.',
