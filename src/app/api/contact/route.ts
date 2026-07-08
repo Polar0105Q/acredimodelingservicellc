@@ -92,6 +92,8 @@ export async function POST(request: Request) {
   });
 
   if (!response.ok) {
+    const errorText = await response.text();
+    console.error('Brevo contact send failed', response.status, errorText);
     return NextResponse.json({ error: 'Could not send contact message.' }, { status: 502 });
   }
 
