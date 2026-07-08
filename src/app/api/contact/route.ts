@@ -19,6 +19,45 @@ function escapeHtml(value: string) {
     .replace(/'/g, '&#039;');
 }
 
+async function sendBrevoEmail({
+  apiKey,
+  senderName,
+  senderEmail,
+  to,
+  replyTo,
+  subject,
+  htmlContent,
+  textContent,
+}: {
+  apiKey: string;
+  senderName: string;
+  senderEmail: string;
+  to: { email: string; name?: string }[];
+  replyTo?: { email: string; name?: string };
+  subject: string;
+  htmlContent: string;
+  textContent: string;
+}) {
+  return fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      'api-key': apiKey,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      sender: {
+        name: senderName,
+        email: senderEmail,
+      },
+      to,
+      replyTo,
+      subject,
+      htmlContent,
+      textContent,
+    }),
+  });
+}
+
 export async function POST(request: Request) {
   let payload: ContactPayload;
 
@@ -53,24 +92,17 @@ export async function POST(request: Request) {
   const safeService = escapeHtml(service);
   const safeMessage = escapeHtml(message).replace(/\n/g, '<br />');
 
-  const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-    method: 'POST',
-    headers: {
-      'api-key': brevoApiKey,
-      'Content-Type': 'application/json',
+  const adminResponse = await sendBrevoEmail({
+    apiKey: brevoApiKey,
+    senderName: contactFromName,
+    senderEmail: contactFromEmail,
+    to: [{ email: contactToEmail }],
+    replyTo: {
+      name,
+      email,
     },
-    body: JSON.stringify({
-      sender: {
-        name: contactFromName,
-        email: contactFromEmail,
-      },
-      to: [{ email: contactToEmail }],
-      replyTo: {
-        name,
-        email,
-      },
-      subject: `New website lead: ${service}`,
-      htmlContent: `
+    subject: `New website lead: ${service}`,
+    htmlContent: `
         <h2>New website contact request</h2>
         <p><strong>Name:</strong> ${safeName}</p>
         <p><strong>Email:</strong> ${safeEmail}</p>
@@ -79,22 +111,52 @@ export async function POST(request: Request) {
         <p><strong>Message:</strong></p>
         <p>${safeMessage}</p>
       `,
-      textContent: [
-        'New website contact request',
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Phone: ${phone || 'Not provided'}`,
-        `Service: ${service}`,
-        '',
-        message,
-      ].join('\n'),
-    }),
+    textContent: [
+      'New website contact request',
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Phone: ${phone || 'Not provided'}`,
+      `Service: ${service}`,
+      '',
+      message,
+    ].join('\n'),
   });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error('Brevo contact send failed', response.status, errorText);
+  if (!adminResponse.ok) {
+    const errorText = await adminResponse.text();
+    console.error('Brevo admin contact send failed', adminResponse.status, errorText);
     return NextResponse.json({ error: 'Could not send contact message.' }, { status: 502 });
+  }
+
+  const clientResponse = await sendBrevoEmail({
+    apiKey: brevoApiKey,
+    senderName: contactFromName,
+    senderEmail: contactFromEmail,
+    to: [{ email, name }],
+    subject: 'We received your project request',
+    htmlContent: `
+      <h2>Thank you, ${safeName}</h2>
+      <p>We received your request for <strong>${safeService}</strong>.</p>
+      <p>Our team will review your message and contact you within 24 hours.</p>
+      <p><strong>Your message:</strong></p>
+      <p>${safeMessage}</p>
+      <p>AC Remodeling Service LLC</p>
+    `,
+    textContent: [
+      `Thank you, ${name}`,
+      `We received your request for ${service}.`,
+      'Our team will review your message and contact you within 24 hours.',
+      '',
+      'Your message:',
+      message,
+      '',
+      'AC Remodeling Service LLC',
+    ].join('\n'),
+  });
+
+  if (!clientResponse.ok) {
+    const errorText = await clientResponse.text();
+    console.error('Brevo client confirmation send failed', clientResponse.status, errorText);
   }
 
   return NextResponse.json({ ok: true });
