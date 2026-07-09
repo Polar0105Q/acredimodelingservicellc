@@ -59,9 +59,9 @@ const testimonials = [
     location: 'Blowing Rock, NC',
     rating: 5,
     quote:
-      'I recommend Remodeling Service to all my clients. Their craftsmanship is flawless and they execute my designs exactly as intended. The 5-year warranty gives my clients complete peace of mind.',
+      'I recommend Remodeling Service to all my clients. Their craftsmanship is flawless and they execute my designs exactly as intended. My clients appreciate their clear communication and careful finish work.',
     quoteEs:
-      'Recomiendo Remodeling Service a todos mis clientes. Su artesanía es impecable y ejecutan mis diseños exactamente como se pretende. La garantía de 5 años da tranquilidad total.',
+      'Recomiendo Remodeling Service a todos mis clientes. Su artesania es impecable y ejecutan mis disenos exactamente como se pretende. Mis clientes valoran su comunicacion clara y acabados cuidadosos.',
     img: 'https://img.rocket.new/generatedImages/rocket_gen_img_10bbbf135-1763294543564.png',
     imgAlt:
       'Sofia Reyes, a young Latina woman with a warm smile, interior designer in Blowing Rock',

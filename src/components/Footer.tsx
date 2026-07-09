@@ -145,7 +145,7 @@ export default function Footer({ lang }: FooterProps) {
                   variant="outline"
                   className="mt-0.5 shrink-0 text-accent transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110"
                 />
-                <span>(305) 555-0192</span>
+                <span>828-292-4453 / 828-292-3566</span>
               </li>
               <li className="group flex items-start gap-2 text-sm text-background/60 transition-colors duration-300 hover:text-background">
                 <Icon

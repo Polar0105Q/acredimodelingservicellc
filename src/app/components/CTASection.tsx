@@ -14,16 +14,16 @@ const t = {
     sub: 'Join 1,200+ homeowners and businesses who chose AC Remodeling Service LLC for their most important projects.',
     cta: 'Request Your Free Estimate Today',
     call: 'Or call us directly',
-    phone: '(305) 555-0192',
-    guarantee: 'Free consultation · No obligation · 5-year warranty',
+    phone: '828-292-4453 / 828-292-3566',
+    guarantee: 'Free consultation · No obligation · Fully insured',
   },
   es: {
     heading: '¿Listo para Transformar Tu Espacio?',
     sub: 'Únete a más de 1,200 propietarios y negocios que eligieron AC Remodeling Service LLC.',
     cta: 'Solicita Tu Estimado Gratis Hoy',
     call: 'O llámanos directamente',
-    phone: '(305) 555-0192',
-    guarantee: 'Consulta gratis · Sin obligación · Garantía de 5 años',
+    phone: '828-292-4453 / 828-292-3566',
+    guarantee: 'Consulta gratis · Sin obligación · Totalmente asegurados',
   },
 };
 
@@ -99,7 +99,7 @@ export default function CTASection({ lang }: CTASectionProps) {
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-4">
                 <span className="text-sm text-white/50">{tx.call}</span>
                 <a
-                  href={`tel:${tx.phone}`}
+                  href="tel:8282924453"
                   className="text-accent font-bold text-sm hover:opacity-80 transition-opacity"
                 >
                   {tx.phone}

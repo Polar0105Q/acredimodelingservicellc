@@ -32,7 +32,7 @@ const t = {
     error: 'Please complete the required fields before sending.',
     submitError: 'We could not send your message right now. Please call or email us directly.',
     info: {
-      phone: '(305) 555-0192',
+      phone: '828-292-4453 / 828-292-3566',
       email: 'info@remodelingservicellc.com',
       address: 'Sugar Mountain · Blowing Rock · Boone\nHickory · Morganton · Lenoir',
       hours: 'Mon–Fri: 8AM–6PM · Sat: 9AM–3PM',
@@ -64,7 +64,7 @@ const t = {
     submitError:
       'No pudimos enviar tu mensaje en este momento. Llámanos o escríbenos directamente.',
     info: {
-      phone: '(305) 555-0192',
+      phone: '828-292-4453 / 828-292-3566',
       email: 'info@remodelingservicellc.com',
       address: 'Sugar Mountain · Blowing Rock · Boone\nHickory · Morganton · Lenoir',
       hours: 'Lun–Vie: 8AM–6PM · Sáb: 9AM–3PM',
@@ -169,7 +169,7 @@ export default function ContactSection({ lang }: ContactSectionProps) {
                 icon: 'PhoneIcon',
                 label: 'Phone',
                 value: tx.info.phone,
-                href: `tel:${tx.info.phone}`,
+                href: 'tel:8282924453',
               },
               {
                 icon: 'EnvelopeIcon',

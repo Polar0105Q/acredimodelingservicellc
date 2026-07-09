@@ -21,9 +21,9 @@ const t = {
     compareAction: 'See after',
     viewAll: 'Start Your Project',
     homeLabel: 'Featured Home Project',
-    homeHeading: 'T&G Ceiling Home Refresh',
+    homeHeading: 'Tongue & Groove Ceiling & Home Refresh',
     homeSub:
-      'A warm residential project featuring Tongue & Groove ceilings, stairs, railing details, flooring, and bright interior finishes.',
+      'A beautiful residential transformation featuring stunning tongue & groove ceilings, custom stairs and elegant railing details.',
   },
   es: {
     label: 'Nuestro Trabajo',
@@ -36,9 +36,9 @@ const t = {
     compareAction: 'Ver despues',
     viewAll: 'Iniciar Proyecto',
     homeLabel: 'Proyecto Casa',
-    homeHeading: 'Renovacion con T&G Ceiling',
+    homeHeading: 'Tongue & Groove Ceiling & Home Refresh',
     homeSub:
-      'Proyecto residencial con Tongue & Groove / T&G Ceiling, escaleras, barandas, pisos y acabados interiores luminosos.',
+      'Una hermosa transformacion residencial con impresionantes cielos tongue & groove, escaleras personalizadas y elegantes detalles de baranda.',
   },
 };
 
@@ -90,7 +90,7 @@ const projects = [
   {
     id: 5,
     category: 'Bathroom',
-    title: 'Shower Wall Upgrade',
+    title: 'Custom Shower Renovation',
     detail: 'Drywall & Finishing',
     before: '/assets/images/projects/shower-before.webp',
     after: '/assets/images/projects/shower-after.webp',

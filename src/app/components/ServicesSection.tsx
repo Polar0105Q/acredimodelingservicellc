@@ -11,13 +11,13 @@ const t = {
   en: {
     label: 'What We Do',
     heading: 'Professional Remodeling Services',
-    sub: 'Focused trade services for clean finishes, durable surfaces, and reliable exterior care.',
+    sub: 'Specialized services delivering flawless finishes, durable surfaces, and reliable exterior care.',
     learn: 'Learn More',
     services: [
       {
         icon: 'PaintBrushIcon',
         title: 'Painting & Drywall',
-        desc: 'Interior and exterior painting, drywall installation, drywall finishing, and popcorn ceiling removal.',
+        desc: 'Interior and exterior painting, drywall installation and finishing, and popcorn ceiling removal.',
         tag: 'Core Service',
       },
       {
@@ -29,13 +29,13 @@ const t = {
       {
         icon: 'Squares2X2Icon',
         title: 'Flooring',
-        desc: 'LVP flooring installation with proper preparation, alignment, transitions, and finish details.',
+        desc: 'LVP flooring installation featuring flawless alignment, seamless transitions, and meticulous detail.',
         tag: '',
       },
       {
         icon: 'SparklesIcon',
         title: 'Exterior Services',
-        desc: 'Pressure washing for exterior surfaces to restore curb appeal and prepare areas for maintenance.',
+        desc: 'Professional pressure washing to restore your home’s curb appeal and prepare surfaces for maintenance.',
         tag: '',
       },
       {
@@ -49,13 +49,13 @@ const t = {
   es: {
     label: 'Lo Que Hacemos',
     heading: 'Servicios Profesionales de Remodelacion',
-    sub: 'Servicios especializados para acabados limpios, superficies duraderas y mantenimiento exterior confiable.',
+    sub: 'Servicios especializados que entregan acabados impecables, superficies duraderas y cuidado exterior confiable.',
     learn: 'Saber Mas',
     services: [
       {
         icon: 'PaintBrushIcon',
         title: 'Pintura y Drywall',
-        desc: 'Pintura interior y exterior, instalacion de drywall, acabado de drywall y remocion de techo popcorn.',
+        desc: 'Pintura interior y exterior, instalacion y acabado de drywall, y remocion de techo popcorn.',
         tag: 'Servicio Principal',
       },
       {
@@ -67,13 +67,13 @@ const t = {
       {
         icon: 'Squares2X2Icon',
         title: 'Pisos',
-        desc: 'Instalacion de pisos LVP con preparacion correcta, alineacion, transiciones y detalles finales.',
+        desc: 'Instalacion de pisos LVP con alineacion impecable, transiciones uniformes y detalle meticuloso.',
         tag: '',
       },
       {
         icon: 'SparklesIcon',
         title: 'Servicios Exteriores',
-        desc: 'Lavado a presion para superficies exteriores, ideal para mejorar la apariencia y preparar mantenimiento.',
+        desc: 'Lavado a presion profesional para restaurar el atractivo exterior y preparar superficies para mantenimiento.',
         tag: '',
       },
       {

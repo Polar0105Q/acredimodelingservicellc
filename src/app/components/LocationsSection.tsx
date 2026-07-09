@@ -15,7 +15,7 @@ const t = {
     areas: ['Sugar Mountain', 'Blowing Rock', 'Boone', 'Hickory', 'Morganton', 'Lenoir'],
     office: 'Service Area',
     address: 'Sugar Mountain · Blowing Rock · Boone\nHickory · Morganton · Lenoir',
-    phone: '(305) 555-0192',
+    phone: '828-292-4453 / 828-292-3566',
     email: 'info@remodelingservicellc.com',
     hours: 'Mon–Fri: 8AM–6PM\nSat: 9AM–3PM',
     hoursLabel: 'Business Hours',
@@ -27,7 +27,7 @@ const t = {
     areas: ['Sugar Mountain', 'Blowing Rock', 'Boone', 'Hickory', 'Morganton', 'Lenoir'],
     office: 'Area de Servicio',
     address: 'Sugar Mountain · Blowing Rock · Boone\nHickory · Morganton · Lenoir',
-    phone: '(305) 555-0192',
+    phone: '828-292-4453 / 828-292-3566',
     email: 'info@remodelingservicellc.com',
     hours: 'Lun–Vie: 8AM–6PM\nSáb: 9AM–3PM',
     hoursLabel: 'Horario de Atención',
@@ -161,7 +161,7 @@ export default function LocationsSection({ lang }: LocationsSectionProps) {
               </address>
               <div className="space-y-2">
                 <a
-                  href={`tel:${tx.phone}`}
+                  href="tel:8282924453"
                   className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors"
                 >
                   <Icon name="PhoneIcon" size={14} variant="outline" className="text-accent" />
