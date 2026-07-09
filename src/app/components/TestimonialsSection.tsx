@@ -82,6 +82,7 @@ export default function TestimonialsSection({ lang }: TestimonialsSectionProps) 
           if (entry.isIntersecting) {
             entry.target.querySelectorAll<HTMLElement>('.reveal').forEach((el, i) => {
               setTimeout(() => {
+                el.classList.add('visible');
                 el.classList.add('animate-in-scroll');
               }, i * 100);
             });
@@ -92,7 +93,7 @@ export default function TestimonialsSection({ lang }: TestimonialsSectionProps) 
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [lang]);
 
   const current = testimonials[active];
 

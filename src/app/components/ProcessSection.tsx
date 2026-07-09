@@ -105,6 +105,7 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
           if (entry.isIntersecting) {
             entry.target.querySelectorAll<HTMLElement>('.reveal').forEach((el, i) => {
               setTimeout(() => {
+                el.classList.add('visible');
                 el.classList.add('animate-in-scroll');
               }, i * 100);
             });
@@ -115,7 +116,7 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [lang]);
 
   return (
     <section

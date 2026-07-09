@@ -21,12 +21,13 @@ export default function HomePage() {
 
   useEffect(() => {
     const root = document.documentElement;
+    root.lang = lang;
     if (theme === 'dark') {
       root.classList?.add('dark');
     } else {
       root.classList?.remove('dark');
     }
-  }, [theme]);
+  }, [lang, theme]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">

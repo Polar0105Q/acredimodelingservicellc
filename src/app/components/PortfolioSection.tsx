@@ -178,6 +178,7 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
           if (entry.isIntersecting) {
             entry.target.querySelectorAll<HTMLElement>('.reveal').forEach((el, i) => {
               setTimeout(() => {
+                el.classList.add('visible');
                 el.classList.add('animate-in-scroll');
               }, i * 80);
             });
@@ -188,7 +189,7 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [lang]);
 
   const normalizedFilter = filterMap[activeFilter] || 'All';
   const filtered =

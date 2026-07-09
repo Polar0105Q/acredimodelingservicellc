@@ -108,7 +108,7 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [lang]);
 
   return (
     <section

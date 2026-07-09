@@ -45,6 +45,7 @@ export default function LocationsSection({ lang }: LocationsSectionProps) {
           if (entry.isIntersecting) {
             entry.target.querySelectorAll<HTMLElement>('.reveal').forEach((el, i) => {
               setTimeout(() => {
+                el.classList.add('visible');
                 el.classList.add('animate-in-scroll');
               }, i * 80);
             });
@@ -55,7 +56,7 @@ export default function LocationsSection({ lang }: LocationsSectionProps) {
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [lang]);
 
   return (
     <section
