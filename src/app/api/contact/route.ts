@@ -9,6 +9,56 @@ type ContactPayload = {
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const maxBodyBytes = 12_000;
+const rateLimitWindowMs = 10 * 60 * 1000;
+const maxRequestsPerWindow = 5;
+const fieldLimits = {
+  name: 100,
+  email: 180,
+  phone: 40,
+  service: 80,
+  message: 2_000,
+};
+const allowedServices = new Set([
+  'Painting & Drywall',
+  'Finish Carpentry',
+  'Flooring - LVP Installation',
+  'Exterior Services - Pressure Washing',
+  'Residential Project Support',
+  'Other',
+  'Pintura y Drywall',
+  'Carpinteria de Acabado',
+  'Pisos - Instalacion LVP',
+  'Servicios Exteriores - Lavado a Presion',
+  'Apoyo para Proyectos Residenciales',
+  'Otro',
+]);
+const requestLog = new Map<string, number[]>();
+
+function getClientKey(request: Request) {
+  const forwarded = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
+  const realIp = request.headers.get('x-real-ip')?.trim();
+  return forwarded || realIp || 'unknown';
+}
+
+function isRateLimited(clientKey: string) {
+  const now = Date.now();
+  const windowStart = now - rateLimitWindowMs;
+  const recentRequests = (requestLog.get(clientKey) || []).filter((time) => time > windowStart);
+
+  if (recentRequests.length >= maxRequestsPerWindow) {
+    requestLog.set(clientKey, recentRequests);
+    return true;
+  }
+
+  recentRequests.push(now);
+  requestLog.set(clientKey, recentRequests);
+  return false;
+}
+
+function isWithinLimit(value: string | null | undefined, maxLength: number) {
+  return Boolean(value && value.length <= maxLength);
+}
 
 function escapeHtml(value: string) {
   return value
@@ -158,9 +208,32 @@ async function sendBrevoEmail({
 
 export async function POST(request: Request) {
   let payload: ContactPayload;
+  let rawBody: string;
+
+  const contentType = request.headers.get('content-type') || '';
+  if (!contentType.toLowerCase().includes('application/json')) {
+    return NextResponse.json({ error: 'Unsupported content type.' }, { status: 415 });
+  }
+
+  const contentLength = Number(request.headers.get('content-length') || '0');
+  if (contentLength > maxBodyBytes) {
+    return NextResponse.json({ error: 'Payload is too large.' }, { status: 413 });
+  }
+
+  const clientKey = getClientKey(request);
+  if (isRateLimited(clientKey)) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      { status: 429 }
+    );
+  }
 
   try {
-    payload = (await request.json()) as ContactPayload;
+    rawBody = await request.text();
+    if (new TextEncoder().encode(rawBody).length > maxBodyBytes) {
+      return NextResponse.json({ error: 'Payload is too large.' }, { status: 413 });
+    }
+    payload = JSON.parse(rawBody) as ContactPayload;
   } catch {
     return NextResponse.json({ error: 'Invalid JSON payload.' }, { status: 400 });
   }
@@ -171,7 +244,19 @@ export async function POST(request: Request) {
   const service = payload.service?.trim();
   const message = payload.message?.trim();
 
-  if (!name || !email || !service || !message || !emailPattern.test(email)) {
+  if (
+    typeof name !== 'string' ||
+    typeof email !== 'string' ||
+    typeof service !== 'string' ||
+    typeof message !== 'string' ||
+    !isWithinLimit(name, fieldLimits.name) ||
+    !isWithinLimit(email, fieldLimits.email) ||
+    !isWithinLimit(service, fieldLimits.service) ||
+    !isWithinLimit(message, fieldLimits.message) ||
+    (phone && phone.length > fieldLimits.phone) ||
+    !emailPattern.test(email) ||
+    !allowedServices.has(service)
+  ) {
     return NextResponse.json({ error: 'Invalid contact form payload.' }, { status: 400 });
   }
 

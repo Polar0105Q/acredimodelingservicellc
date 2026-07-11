@@ -26,6 +26,7 @@ const t = {
     privacy: 'Privacy',
     terms: 'Terms',
     copyright: '© 2026 AC Remodeling Service LLC®. All rights reserved.',
+    signature: 'Arte & Codigo by JR',
     serviceArea: 'Serving Sugar Mountain, Blowing Rock, Boone, Hickory, Morganton, and Lenoir',
   },
   es: {
@@ -47,6 +48,7 @@ const t = {
     privacy: 'Privacidad',
     terms: 'Terminos',
     copyright: '© 2026 AC Remodeling Service LLC®. Todos los derechos reservados.',
+    signature: 'Arte & Codigo by JR',
     serviceArea: 'Servicio en Sugar Mountain, Blowing Rock, Boone, Hickory, Morganton y Lenoir',
   },
 };
@@ -174,7 +176,12 @@ export default function Footer({ lang }: FooterProps) {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-background/30">{tx.copyright}</p>
+          <div className="text-center md:text-left">
+            <p className="text-xs text-background/30">{tx.copyright}</p>
+            <p className="mt-2 text-xs font-semibold tracking-wide text-background/45">
+              — {tx.signature}
+            </p>
+          </div>
           <div className="flex gap-6">
             <a
               href="/privacy"
