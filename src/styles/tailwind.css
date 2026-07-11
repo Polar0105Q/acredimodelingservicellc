@@ -314,7 +314,7 @@
 
   /* Hero heading size */
   .text-hero {
-    font-size: clamp(2.35rem, 4.25vw, 4.65rem);
+    font-size: clamp(2.15rem, 4.25vw, 4.65rem);
     line-height: 0.92;
   }
 
@@ -405,6 +405,7 @@
   .floating-label-group input:not(:placeholder-shown) ~ label,
   .floating-label-group select:focus ~ label,
   .floating-label-group select:not([value='']) ~ label,
+  .floating-label-group select:valid ~ label,
   .floating-label-group textarea:focus ~ label,
   .floating-label-group textarea:not(:placeholder-shown) ~ label {
     top: 0.4rem;
@@ -454,6 +455,10 @@
   }
 
   @media (max-width: 1023px) {
+    .grid-lines {
+      display: none;
+    }
+
     .animate-cinematic,
     .animate-blob,
     .animate-shimmer {

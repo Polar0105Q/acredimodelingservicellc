@@ -122,7 +122,7 @@ export default function TestimonialsSection({ lang }: TestimonialsSectionProps) 
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Main testimonial */}
-          <div className="reveal">
+          <div className="hidden lg:block reveal">
             <div className="bg-card border border-border rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-xl">
               <div className="absolute top-0 right-0 w-48 h-48 blob-primary opacity-5 pointer-events-none" />
 
@@ -197,10 +197,10 @@ export default function TestimonialsSection({ lang }: TestimonialsSectionProps) 
               <button
                 key={t.name}
                 onClick={() => setActive(i)}
-                className={`flex items-start gap-4 p-5 rounded-2xl border text-left transition-all duration-300 ${
+                className={`flex items-start gap-4 p-5 rounded-2xl border bg-card text-left transition-all duration-300 pointer-events-none lg:pointer-events-auto ${
                   active === i
-                    ? 'border-primary bg-primary/5 shadow-lg shadow-primary/10'
-                    : 'border-border bg-card hover:border-primary/30 hover:bg-primary/3'
+                    ? 'border-border lg:border-primary lg:bg-primary/5 lg:shadow-lg lg:shadow-primary/10'
+                    : 'border-border lg:hover:border-primary/30 lg:hover:bg-primary/3'
                 }`}
               >
                 <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0">

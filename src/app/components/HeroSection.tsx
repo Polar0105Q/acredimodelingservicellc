@@ -10,7 +10,7 @@ interface HeroSectionProps {
 
 const t = {
   en: {
-    badge: 'Est. 2019 · Fully Insured',
+    badge: 'Est. 2019 - Fully Insured',
     headline1: 'TRANSFORM',
     headline2: 'SPACES',
     sub: 'Premium remodeling solutions for homes and businesses with craftsmanship, innovation, and attention to detail.',
@@ -25,7 +25,7 @@ const t = {
     scroll: 'Scroll',
   },
   es: {
-    badge: 'Est. 2019 · Totalmente Asegurados',
+    badge: 'Est. 2019 - Totalmente Asegurados',
     headline1: 'TRANSFORMA',
     headline2: 'ESPACIOS',
     sub: 'Soluciones premium de remodelación para hogares y negocios con artesanía, innovación y atención al detalle.',
@@ -65,7 +65,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
     <section
       id="hero"
       ref={heroRef}
-      className="relative w-full min-h-[100svh] overflow-hidden flex flex-col justify-end pt-28 pb-12 md:pb-16 lg:pb-20 noise-overlay"
+      className="relative w-full min-h-[100svh] overflow-hidden flex flex-col justify-end pt-28 pb-16 md:pb-16 lg:pb-20 noise-overlay"
     >
       {/* Background Image — cinematic entrance */}
       <div className="absolute inset-0 z-0 bg-foreground">
@@ -182,7 +182,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
 
       {/* Scroll indicator */}
       <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 animate-slide-up opacity-0"
+        className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 hidden flex-col items-center gap-2 z-10 animate-slide-up opacity-0 sm:flex"
         style={{ animationDelay: '2.5s', animationFillMode: 'forwards' }}
       >
         <span className="text-xs uppercase tracking-widest text-white/30">{tx.scroll}</span>

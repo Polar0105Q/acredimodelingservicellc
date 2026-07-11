@@ -317,7 +317,9 @@ export default function ContactSection({ lang }: ContactSectionProps) {
                       aria-invalid={Boolean(error && !form.service)}
                       required
                     >
-                      <option value=""></option>
+                      <option value="" disabled>
+                        {tx.fields.service}
+                      </option>
                       {serviceOptions.map((s) => (
                         <option key={s} value={s}>
                           {s}

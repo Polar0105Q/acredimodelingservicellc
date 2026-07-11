@@ -15,7 +15,7 @@ const t = {
     cta: 'Request Your Free Estimate Today',
     call: 'Or call us directly',
     phone: '828-292-4453 / 828-292-3566',
-    guarantee: 'Free consultation · No obligation · Fully insured',
+    guarantee: 'Free consultation - No obligation - Fully insured',
   },
   es: {
     heading: '¿Listo para Transformar Tu Espacio?',
@@ -23,7 +23,7 @@ const t = {
     cta: 'Solicita Tu Estimado Gratis Hoy',
     call: 'O llámanos directamente',
     phone: '828-292-4453 / 828-292-3566',
-    guarantee: 'Consulta gratis · Sin obligación · Totalmente asegurados',
+    guarantee: 'Consulta gratis - Sin obligacion - Totalmente asegurados',
   },
 };
 
@@ -54,33 +54,33 @@ export default function CTASection({ lang }: CTASectionProps) {
   return (
     <section
       ref={sectionRef}
-      className="py-16 md:py-24 px-5 md:px-6 bg-background relative overflow-hidden"
+      className="py-14 md:py-24 px-5 md:px-6 bg-background relative overflow-hidden"
     >
       <div className="max-w-5xl mx-auto relative">
         {/* Background card */}
-        <div className="relative rounded-3xl md:rounded-[2.5rem] overflow-hidden min-h-[360px] md:min-h-[400px] flex items-center">
+        <div className="relative rounded-3xl md:rounded-[2.5rem] overflow-hidden min-h-[420px] md:min-h-[400px] flex items-center">
           {/* Background image */}
           <AppImage
             src="https://img.rocket.new/generatedImages/rocket_gen_img_12253e59e-1772950411886.png"
             alt="Beautifully renovated living room with warm lighting, high ceilings, and modern furniture in a luxury home"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             sizes="(max-width: 1280px) 100vw, 80rem"
             quality={75}
           />
 
           {/* Strong dark scrim for white text */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/72 to-black/55" />
           {/* Blue tint overlay */}
           <div className="absolute inset-0 bg-primary/20" />
 
           {/* Decorative blob */}
-          <div className="absolute top-0 right-0 w-96 h-96 blob-accent animate-blob opacity-20 pointer-events-none" />
+          <div className="absolute top-0 right-0 hidden w-96 h-96 blob-accent animate-blob opacity-20 pointer-events-none md:block" />
 
           {/* Content */}
-          <div className="relative z-10 w-full px-6 md:px-16 py-12 md:py-16">
-            <div className="max-w-2xl reveal">
-              <h2 className="text-display font-display font-bold text-white mb-5 md:mb-6">
+          <div className="relative z-10 w-full px-7 md:px-16 py-12 md:py-16">
+            <div className="max-w-xl md:max-w-2xl reveal">
+              <h2 className="text-[2rem] leading-tight md:text-display font-display font-bold text-white mb-5 md:mb-6">
                 {tx.heading}
               </h2>
               <p className="text-base md:text-lg text-white/70 mb-7 md:mb-8 leading-relaxed">
@@ -90,7 +90,7 @@ export default function CTASection({ lang }: CTASectionProps) {
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <a
                   href="#contact"
-                  className="flex items-center justify-center gap-2 px-5 sm:px-8 py-4 bg-accent text-accent-foreground rounded-xl font-bold text-sm hover:opacity-90 transition-all shadow-2xl shadow-accent/30 hover:shadow-accent/50"
+                  className="flex items-center justify-between gap-3 px-5 sm:px-8 py-4 bg-accent text-accent-foreground rounded-xl font-bold text-sm hover:opacity-90 transition-all shadow-2xl shadow-accent/30 hover:shadow-accent/50"
                 >
                   {tx.cta}
                   <Icon name="ArrowRightIcon" size={18} variant="outline" />
@@ -107,7 +107,7 @@ export default function CTASection({ lang }: CTASectionProps) {
                 </a>
               </div>
 
-              <p className="text-xs text-white/40 flex items-start sm:items-center gap-2">
+              <p className="text-xs text-white/45 flex items-start sm:items-center gap-2 leading-relaxed">
                 <Icon name="CheckCircleIcon" size={14} variant="outline" className="text-accent" />
                 {tx.guarantee}
               </p>

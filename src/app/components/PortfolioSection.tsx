@@ -16,9 +16,11 @@ const t = {
     sub: 'Before-and-after work from recent painting, carpentry, flooring, drywall, and exterior projects.',
     filters: ['All', 'Carpentry', 'Painting', 'Kitchen', 'Bathroom', 'Exterior'],
     before: 'Before',
-    after: 'After',
-    compareHint: 'Hover or tap to see after',
-    compareAction: 'See after',
+    after: 'Current',
+    compareHint: 'Tap to switch before/current',
+    compareAction: 'See current',
+    preview: 'Preview',
+    closePreview: 'Close preview',
     viewAll: 'Start Your Project',
     homeLabel: 'Featured Home Project',
     homeHeading: 'Tongue & Groove Ceiling & Home Refresh',
@@ -28,12 +30,14 @@ const t = {
   es: {
     label: 'Nuestro Trabajo',
     heading: 'Transformaciones Reales',
-    sub: 'Antes y despues de trabajos recientes de pintura, carpinteria, pisos, drywall y exterior.',
+    sub: 'Antes y actual de trabajos recientes de pintura, carpinteria, pisos, drywall y exterior.',
     filters: ['Todo', 'Carpinteria', 'Pintura', 'Cocina', 'Bano', 'Exterior'],
     before: 'Antes',
-    after: 'Despues',
-    compareHint: 'Pasa el cursor o toca para ver el despues',
-    compareAction: 'Ver despues',
+    after: 'Actual',
+    compareHint: 'Toca para alternar antes/actual',
+    compareAction: 'Ver actual',
+    preview: 'Ampliar',
+    closePreview: 'Cerrar preview',
     viewAll: 'Iniciar Proyecto',
     homeLabel: 'Proyecto Casa',
     homeHeading: 'Tongue & Groove Ceiling & Home Refresh',
@@ -47,7 +51,9 @@ const projects = [
     id: 1,
     category: 'Painting',
     title: 'Built-In Cabinet Painting',
+    titleEs: 'Pintura de Gabinete Empotrado',
     detail: 'Interior Painting',
+    detailEs: 'Pintura Interior',
     before: '/assets/images/projects/built-in-cabinet-before.webp',
     after: '/assets/images/projects/built-in-cabinet-after.webp',
     beforeAlt: 'Dark built-in cabinet before interior painting',
@@ -58,7 +64,9 @@ const projects = [
     id: 2,
     category: 'Carpentry',
     title: 'Wall Unit Finish Refresh',
+    titleEs: 'Renovacion de Mueble de Pared',
     detail: 'Finish Carpentry',
+    detailEs: 'Carpinteria de Acabado',
     before: '/assets/images/projects/wall-unit-before.webp',
     after: '/assets/images/projects/wall-unit-after.webp',
     beforeAlt: 'Dark wood wall unit before finish update',
@@ -69,7 +77,9 @@ const projects = [
     id: 3,
     category: 'Painting',
     title: 'Interior Railing Update',
+    titleEs: 'Actualizacion de Barandal Interior',
     detail: 'Interior Painting',
+    detailEs: 'Pintura Interior',
     before: '/assets/images/projects/railing-before.webp',
     after: '/assets/images/projects/railing-after.webp',
     beforeAlt: 'Dark interior railing before painting',
@@ -80,7 +90,9 @@ const projects = [
     id: 4,
     category: 'Kitchen',
     title: 'Kitchen Cabinet Finish',
+    titleEs: 'Acabado de Gabinetes de Cocina',
     detail: 'Cabinet Painting',
+    detailEs: 'Pintura de Gabinetes',
     before: '/assets/images/projects/kitchen-cabinet-before.webp',
     after: '/assets/images/projects/kitchen-cabinet-after.webp',
     beforeAlt: 'Kitchen cabinets before painting',
@@ -91,7 +103,9 @@ const projects = [
     id: 5,
     category: 'Bathroom',
     title: 'Custom Shower Renovation',
+    titleEs: 'Renovacion de Ducha Personalizada',
     detail: 'Drywall & Finishing',
+    detailEs: 'Drywall y Acabados',
     before: '/assets/images/projects/shower-before.webp',
     after: '/assets/images/projects/shower-after.webp',
     beforeAlt: 'Shower area before wall finish installation',
@@ -102,7 +116,9 @@ const projects = [
     id: 6,
     category: 'Exterior',
     title: 'Exterior Door Installation',
+    titleEs: 'Instalacion de Puerta Exterior',
     detail: 'Exterior Finish Work',
+    detailEs: 'Acabados Exteriores',
     before: '/assets/images/projects/exterior-door-before.webp',
     after: '/assets/images/projects/exterior-door-after.webp',
     beforeAlt: 'Exterior wall opening before door installation',
@@ -160,11 +176,36 @@ const filterMap: Record<string, string> = {
   Exterior: 'Exterior',
 };
 
+const categoryLabels: Record<'en' | 'es', Record<string, string>> = {
+  en: {
+    Painting: 'Painting',
+    Carpentry: 'Carpentry',
+    Kitchen: 'Kitchen',
+    Bathroom: 'Bathroom',
+    Exterior: 'Exterior',
+  },
+  es: {
+    Painting: 'Pintura',
+    Carpentry: 'Carpinteria',
+    Kitchen: 'Cocina',
+    Bathroom: 'Bano',
+    Exterior: 'Exterior',
+  },
+};
+
+type PreviewImage = {
+  src: string;
+  alt: string;
+  title: string;
+  label?: string;
+};
+
 export default function PortfolioSection({ lang }: PortfolioSectionProps) {
   const tx = t[lang];
   const [activeFilter, setActiveFilter] = useState(tx.filters[0]);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [activeCompareId, setActiveCompareId] = useState<number | null>(null);
+  const [preview, setPreview] = useState<PreviewImage | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -200,6 +241,19 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
     setActiveCompareId(null);
   }, [activeFilter]);
 
+  useEffect(() => {
+    if (!preview) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setPreview(null);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [preview]);
+
   return (
     <section
       id="projects"
@@ -208,7 +262,7 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
     >
       <div className="absolute bottom-0 left-0 w-96 h-96 blob-accent animate-blob pointer-events-none opacity-30" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-12 gap-6 reveal">
           <div>
             <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">
@@ -225,13 +279,13 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
           </a>
         </div>
 
-        <div className="-mx-6 px-6 mb-10 overflow-x-auto hide-scrollbar reveal">
-          <div className="flex w-max min-w-full gap-2">
+        <div className="-mx-5 sm:-mx-6 px-5 sm:px-6 mb-10 overflow-x-auto hide-scrollbar reveal">
+          <div className="flex w-max min-w-full gap-2.5 pr-5">
             {tx.filters.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`min-w-[6.75rem] whitespace-nowrap px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
+                className={`min-w-[6.25rem] whitespace-nowrap px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 sm:min-w-[6.75rem] ${
                   activeFilter === filter
                     ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
                     : 'bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary/30'
@@ -247,18 +301,24 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
           {filtered.map((project, idx) => {
             const isFeatured = project.featured && filtered.length > 2;
             const showAfter = hoveredId === project.id || activeCompareId === project.id;
+            const title = lang === 'es' ? project.titleEs : project.title;
+            const detail = lang === 'es' ? project.detailEs : project.detail;
+            const category = categoryLabels[lang][project.category] || project.category;
+            const previewImage = showAfter
+              ? { src: project.after, alt: project.afterAlt, title, label: tx.after }
+              : { src: project.before, alt: project.beforeAlt, title, label: tx.before };
 
             return (
               <div
                 key={project.id}
                 role="button"
                 tabIndex={0}
-                aria-label={`${project.title}: ${tx.compareHint}`}
+                aria-label={`${title}: ${tx.compareHint}`}
                 aria-pressed={showAfter}
                 className={`portfolio-card group relative rounded-3xl overflow-hidden bg-card border border-border cursor-pointer ${
                   isFeatured
-                    ? 'min-h-[360px] lg:min-h-[480px] lg:col-span-2 lg:row-span-2'
-                    : 'min-h-[260px] lg:min-h-[280px]'
+                    ? 'min-h-[430px] lg:min-h-[480px] lg:col-span-2 lg:row-span-2'
+                    : 'min-h-[390px] lg:min-h-[280px]'
                 }`}
                 style={{ transitionDelay: `${idx * 80}ms` }}
                 onPointerEnter={(event) => {
@@ -323,9 +383,21 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent pointer-events-none" />
                 </div>
 
-                <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 z-10 flex justify-center pointer-events-none">
+                <button
+                  type="button"
+                  aria-label={`${tx.preview}: ${title}`}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setPreview(previewImage);
+                  }}
+                  className="absolute bottom-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white shadow-xl backdrop-blur-md transition-all hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-white/70"
+                >
+                  <Icon name="ArrowsPointingOutIcon" size={18} variant="outline" />
+                </button>
+
+                <div className="absolute inset-x-4 top-[43%] -translate-y-1/2 z-10 flex justify-center pointer-events-none">
                   <span
-                    className={`inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/55 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-xl backdrop-blur-md transition-all duration-300 ${
+                    className={`inline-flex max-w-[calc(100%-1rem)] items-center gap-2 rounded-full border border-white/20 bg-black/55 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-xl backdrop-blur-md transition-all duration-300 ${
                       showAfter
                         ? 'translate-y-2 opacity-0'
                         : 'opacity-100 md:opacity-0 md:group-hover:opacity-100'
@@ -336,16 +408,16 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                   </span>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="absolute bottom-0 left-0 right-0 p-5 pr-16 sm:p-6 sm:pr-16">
                   <span className="text-xs uppercase tracking-widest text-accent font-semibold">
-                    {project.category}
+                    {category}
                   </span>
-                  <h3 className="text-lg font-display font-bold text-white mt-1">
-                    {project.title}
+                  <h3 className="text-[1.05rem] font-display font-bold text-white mt-1 leading-tight sm:text-lg">
+                    {title}
                   </h3>
                   <div className="mt-2 flex items-center gap-1 text-sm text-white/65">
                     <Icon name="TagIcon" size={12} variant="outline" />
-                    <span>{project.detail}</span>
+                    <span>{detail}</span>
                   </div>
                   <p className="mt-3 text-[0.68rem] font-semibold uppercase tracking-wider text-white/55">
                     {tx.compareHint}
@@ -373,12 +445,22 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {homeProjectImages.map((image, i) => (
-              <div
+              <button
                 key={image.src}
-                className={`relative overflow-hidden rounded-2xl bg-card border border-border reveal ${
+                type="button"
+                onClick={() =>
+                  setPreview({
+                    src: image.src,
+                    alt: image.alt,
+                    title: tx.homeHeading,
+                    label: `${i + 1} / ${homeProjectImages.length}`,
+                  })
+                }
+                className={`relative overflow-hidden rounded-2xl bg-card border border-border reveal group ${
                   i === 0 || i === 4 ? 'aspect-[3/4]' : 'aspect-[4/5]'
                 }`}
                 style={{ transitionDelay: `${i * 60}ms` }}
+                aria-label={`${tx.preview}: ${tx.homeHeading}`}
               >
                 <AppImage
                   src={image.src}
@@ -388,11 +470,60 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                   sizes="(max-width: 768px) 50vw, 25vw"
                   quality={75}
                 />
-              </div>
+                <span className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white opacity-100 shadow-xl backdrop-blur-md transition-all group-hover:bg-black/70 md:opacity-0 md:group-hover:opacity-100">
+                  <Icon name="ArrowsPointingOutIcon" size={17} variant="outline" />
+                </span>
+              </button>
             ))}
           </div>
         </div>
       </div>
+
+      {preview && (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/90 px-4 py-5"
+          role="dialog"
+          aria-modal="true"
+          aria-label={preview.title}
+          onClick={() => setPreview(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setPreview(null)}
+            className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/70"
+            aria-label={tx.closePreview}
+          >
+            <Icon name="XMarkIcon" size={22} variant="outline" />
+          </button>
+
+          <div
+            className="relative flex h-full w-full max-w-6xl flex-col"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-3 flex items-center justify-between gap-4 text-white">
+              <div className="min-w-0">
+                <p className="truncate text-sm font-semibold">{preview.title}</p>
+                {preview.label && (
+                  <p className="mt-0.5 text-xs uppercase tracking-wider text-white/60">
+                    {preview.label}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="relative min-h-0 flex-1 overflow-hidden rounded-2xl bg-black">
+              <Image
+                src={preview.src}
+                alt={preview.alt}
+                fill
+                className="object-contain"
+                sizes="100vw"
+                quality={100}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
