@@ -115,10 +115,10 @@ export default function LocationsSection({ lang }: LocationsSectionProps) {
             ))}
             {/* Main service marker */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
-              <div className="w-7 h-7 rounded-full bg-foreground shadow-xl flex items-center justify-center ring-4 ring-white/50">
+              <div className="w-7 h-7 rounded-full bg-[var(--brand-ink)] shadow-xl flex items-center justify-center ring-4 ring-white/50">
                 <div className="w-3 h-3 rounded-full bg-accent" />
               </div>
-              <span className="text-xs text-background font-bold bg-foreground px-3 py-1 rounded-full">
+              <span className="text-xs text-white font-bold bg-[var(--brand-ink)] px-3 py-1 rounded-full">
                 EST. 2019
               </span>
             </div>

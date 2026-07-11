@@ -58,7 +58,7 @@ export default function CTASection({ lang }: CTASectionProps) {
     >
       <div className="max-w-5xl mx-auto relative">
         {/* Background card */}
-        <div className="relative rounded-3xl md:rounded-[2.5rem] overflow-hidden min-h-[420px] md:min-h-[400px] flex items-center bg-foreground">
+        <div className="relative rounded-3xl md:rounded-[2.5rem] overflow-hidden min-h-[420px] md:min-h-[400px] flex items-center bg-[var(--brand-ink)]">
           {/* Background image */}
           <div className="absolute inset-0">
             <AppImage

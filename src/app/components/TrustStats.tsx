@@ -28,16 +28,21 @@ const t = {
 function useCounter(end: number, duration: number, started: boolean) {
   const [count, setCount] = useState(0);
   useEffect(() => {
-    if (!started) return;
+    if (!started) {
+      setCount(0);
+      return;
+    }
     let startTime: number | null = null;
+    let frame = 0;
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * end));
-      if (progress < 1) requestAnimationFrame(step);
+      if (progress < 1) frame = requestAnimationFrame(step);
     };
-    requestAnimationFrame(step);
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
   }, [end, duration, started]);
   return count;
 }
@@ -58,7 +63,11 @@ function StatItem({
   const count = useCounter(end, 1800, started);
   return (
     <div
-      className="flex flex-col items-center text-center px-4 py-5 md:px-6 md:py-7"
+      className={`flex flex-col items-center text-center px-4 py-5 md:px-6 md:py-7 ${
+        index === 0 ? 'border-r border-b lg:border-b-0' : ''
+      } ${index === 1 ? 'border-b lg:border-r lg:border-b-0' : ''} ${
+        index === 2 ? 'border-r lg:border-r' : ''
+      } ${index === 3 ? 'lg:border-r-0' : ''} border-border`}
       style={{ transitionDelay: `${index * 120}ms` }}
     >
       <span className="font-display text-5xl md:text-6xl font-bold text-primary leading-none">
@@ -76,20 +85,15 @@ export default function TrustStats({ lang }: TrustStatsProps) {
   const tx = t[lang];
   const ref = useRef<HTMLDivElement>(null);
   const [started, setStarted] = useState(false);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setStarted(true);
-            setVisible(true);
-            observer.disconnect();
-          }
+          setStarted(entry.isIntersecting);
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.45 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -107,9 +111,7 @@ export default function TrustStats({ lang }: TrustStatsProps) {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div
-          className={`grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-border transition-opacity duration-500 ${visible ? 'opacity-100' : 'opacity-100'}`}
-        >
+        <div className="grid grid-cols-2 lg:grid-cols-4 transition-opacity duration-500">
           {tx.stats.map((stat, i) => (
             <StatItem key={stat.label} {...stat} index={i} started={started} />
           ))}

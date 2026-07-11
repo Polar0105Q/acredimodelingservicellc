@@ -122,7 +122,7 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
     <section
       id="process"
       ref={sectionRef}
-      className="py-16 md:py-24 lg:py-32 bg-foreground text-background relative overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 bg-[var(--brand-ink)] text-white relative overflow-hidden"
     >
       <div className="absolute top-1/4 left-0 w-96 h-96 blob-primary animate-blob pointer-events-none opacity-20" />
 
@@ -131,8 +131,8 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
           <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">
             {tx.label}
           </span>
-          <h2 className="text-section font-display font-bold text-background mb-4">{tx.heading}</h2>
-          <p className="text-base md:text-lg text-background/60 leading-relaxed">{tx.sub}</p>
+          <h2 className="text-section font-display font-bold text-white mb-4">{tx.heading}</h2>
+          <p className="text-base md:text-lg text-white/60 leading-relaxed">{tx.sub}</p>
         </div>
 
         {/* Steps — horizontal on desktop, vertical on mobile */}
@@ -155,7 +155,7 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
                 <div className="flex items-center justify-between mb-4">
                   <span
                     className={`text-xs font-mono font-bold tracking-widest ${
-                      i === 0 ? 'text-accent' : 'text-background/30'
+                      i === 0 ? 'text-accent' : 'text-white/30'
                     }`}
                   >
                     {step.num}
@@ -169,28 +169,28 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
                       name={step.icon as 'ChatBubbleLeftRightIcon'}
                       size={20}
                       variant="outline"
-                      className={i === 0 ? 'text-accent' : 'text-background/50'}
+                      className={i === 0 ? 'text-accent' : 'text-white/50'}
                     />
                   </div>
                 </div>
 
                 <h3
                   className={`text-base font-display font-bold mb-2 ${
-                    i === 0 ? 'text-background' : 'text-background/80'
+                    i === 0 ? 'text-white' : 'text-white/80'
                   }`}
                 >
                   {step.title}
                 </h3>
                 <p
                   className={`text-xs leading-relaxed ${
-                    i === 0 ? 'text-background/80' : 'text-background/40'
+                    i === 0 ? 'text-white/80' : 'text-white/40'
                   }`}
                 >
                   {step.desc}
                 </p>
                 <div
                   className={`mt-4 flex items-center gap-1.5 text-xs font-medium ${
-                    i === 0 ? 'text-accent' : 'text-background/30'
+                    i === 0 ? 'text-accent' : 'text-white/30'
                   }`}
                 >
                   <Icon name="ClockIcon" size={12} variant="outline" />

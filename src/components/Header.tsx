@@ -21,6 +21,7 @@ const t = {
     locations: 'Locations',
     contact: 'Contact',
     cta: 'Get Free Estimate',
+    language: 'Language',
   },
   es: {
     home: 'Inicio',
@@ -30,6 +31,7 @@ const t = {
     locations: 'Ubicaciones',
     contact: 'Contacto',
     cta: 'Estimado Gratis',
+    language: 'Idioma',
   },
 };
 
@@ -68,10 +70,10 @@ export default function Header({ lang, theme, onLangChange, onThemeChange }: Hea
           <span className="rounded-xl bg-accent/90 p-1 shadow-sm ring-1 ring-black/10">
             <AppLogo src="/assets/images/ac-remodeling-logo.png" size={34} />
           </span>
-          <span className="block max-w-[8.25rem] truncate font-display text-[0.9rem] font-semibold tracking-tight text-foreground sm:max-w-none sm:text-lg">
-            AC Remodeling
+          <span className="block max-w-[11.5rem] font-display text-[0.82rem] font-semibold leading-tight tracking-tight text-foreground sm:max-w-none sm:text-lg">
+            AC Remodeling Service
             <span className="text-accent font-bold"> LLC</span>
-            <sup className="text-xs text-muted-foreground">®</sup>
+            <sup className="text-[0.6rem] text-muted-foreground">®</sup>
           </span>
         </Link>
 
@@ -92,7 +94,7 @@ export default function Header({ lang, theme, onLangChange, onThemeChange }: Hea
         {/* Actions */}
         <div className="flex shrink-0 items-center gap-2">
           {/* Language Switcher */}
-          <div className="flex items-center bg-muted rounded-xl overflow-hidden border border-border">
+          <div className="hidden items-center bg-muted rounded-xl overflow-hidden border border-border sm:flex">
             <button
               onClick={() => onLangChange('en')}
               className={`px-2.5 py-1.5 text-xs font-semibold transition-all duration-200 ${
@@ -154,6 +156,31 @@ export default function Header({ lang, theme, onLangChange, onThemeChange }: Hea
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="absolute top-full left-4 right-4 mt-2 glass-light rounded-2xl shadow-xl border border-border p-6 flex flex-col gap-4 lg:hidden">
+          <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
+            <span className="text-sm font-semibold text-foreground">{tx.language}</span>
+            <div className="flex items-center bg-muted rounded-xl overflow-hidden border border-border">
+              <button
+                onClick={() => onLangChange('en')}
+                className={`px-3 py-2 text-xs font-semibold transition-all duration-200 ${
+                  lang === 'en'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => onLangChange('es')}
+                className={`px-3 py-2 text-xs font-semibold transition-all duration-200 ${
+                  lang === 'es'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                ES
+              </button>
+            </div>
+          </div>
           {navLinks.map((link) => (
             <a
               key={link.href}

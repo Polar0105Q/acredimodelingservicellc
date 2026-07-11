@@ -18,7 +18,6 @@ const t = {
     before: 'Before',
     after: 'Current',
     compareHint: 'Tap to switch before/current',
-    compareAction: 'See current',
     preview: 'Preview',
     closePreview: 'Close preview',
     viewAll: 'Start Your Project',
@@ -35,7 +34,6 @@ const t = {
     before: 'Antes',
     after: 'Actual',
     compareHint: 'Toca para alternar antes/actual',
-    compareAction: 'Ver actual',
     preview: 'Ampliar',
     closePreview: 'Cerrar preview',
     viewAll: 'Iniciar Proyecto',
@@ -376,10 +374,6 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                     </span>
                   </div>
 
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-[0.62rem] font-bold uppercase tracking-wider bg-white/12 text-white backdrop-blur-sm border border-white/15 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-                    {tx.before} / {tx.after}
-                  </div>
-
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent pointer-events-none" />
                 </div>
 
@@ -394,19 +388,6 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                 >
                   <Icon name="ArrowsPointingOutIcon" size={18} variant="outline" />
                 </button>
-
-                <div className="absolute inset-x-4 top-[43%] -translate-y-1/2 z-10 flex justify-center pointer-events-none">
-                  <span
-                    className={`inline-flex max-w-[calc(100%-1rem)] items-center gap-2 rounded-full border border-white/20 bg-black/55 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-xl backdrop-blur-md transition-all duration-300 ${
-                      showAfter
-                        ? 'translate-y-2 opacity-0'
-                        : 'opacity-100 md:opacity-0 md:group-hover:opacity-100'
-                    }`}
-                  >
-                    {tx.compareAction}
-                    <Icon name="ArrowRightIcon" size={14} variant="outline" />
-                  </span>
-                </div>
 
                 <div className="absolute bottom-0 left-0 right-0 p-5 pr-16 sm:p-6 sm:pr-16">
                   <span className="text-xs uppercase tracking-widest text-accent font-semibold">
@@ -456,9 +437,7 @@ export default function PortfolioSection({ lang }: PortfolioSectionProps) {
                     label: `${i + 1} / ${homeProjectImages.length}`,
                   })
                 }
-                className={`relative overflow-hidden rounded-2xl bg-card border border-border reveal group ${
-                  i === 0 || i === 4 ? 'aspect-[3/4]' : 'aspect-[4/5]'
-                }`}
+                className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-card border border-border reveal group"
                 style={{ transitionDelay: `${i * 60}ms` }}
                 aria-label={`${tx.preview}: ${tx.homeHeading}`}
               >

@@ -12,7 +12,6 @@ const t = {
     label: 'What We Do',
     heading: 'Professional Remodeling Services',
     sub: 'Specialized services delivering flawless finishes, durable surfaces, and reliable exterior care.',
-    learn: 'Learn More',
     services: [
       {
         icon: 'PaintBrushIcon',
@@ -50,7 +49,6 @@ const t = {
     label: 'Lo Que Hacemos',
     heading: 'Servicios Profesionales de Remodelacion',
     sub: 'Servicios especializados que entregan acabados impecables, superficies duraderas y cuidado exterior confiable.',
-    learn: 'Saber Mas',
     services: [
       {
         icon: 'PaintBrushIcon',
@@ -140,7 +138,7 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
                   featured
                     ? 'lg:col-span-2 bg-primary text-primary-foreground min-h-[260px] md:min-h-[320px]'
                     : dark
-                      ? 'lg:col-span-2 bg-foreground text-background min-h-[240px] md:min-h-[280px]'
+                      ? 'lg:col-span-2 bg-[var(--brand-ink)] text-white min-h-[240px] md:min-h-[280px]'
                       : accent
                         ? 'bg-accent/5 border border-accent/20 min-h-[240px] md:min-h-[280px] hover:bg-accent/10 hover:shadow-xl'
                         : 'bg-card border border-border min-h-[240px] md:min-h-[280px] hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5'
@@ -156,7 +154,7 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
 
                 {dark && (
                   <>
-                    <div className="absolute inset-0 bg-gradient-to-br from-foreground to-gray-800" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-ink)] to-zinc-800" />
                     <div className="absolute top-0 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
                   </>
                 )}
@@ -208,29 +206,12 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
                         featured
                           ? 'text-primary-foreground/70'
                           : dark
-                            ? 'text-background/60'
+                            ? 'text-white/65'
                             : 'text-muted-foreground'
                       }`}
                     >
                       {service.desc}
                     </p>
-                  </div>
-
-                  <div
-                    className={`mt-6 flex items-center gap-2 font-semibold transition-all duration-300 ${
-                      featured || dark
-                        ? 'text-sm text-accent group-hover:gap-4'
-                        : accent
-                          ? 'text-xs text-foreground group-hover:gap-3'
-                          : 'text-xs text-primary group-hover:gap-3'
-                    }`}
-                  >
-                    {tx.learn}
-                    <Icon
-                      name="ArrowRightIcon"
-                      size={featured || dark ? 16 : 14}
-                      variant="outline"
-                    />
                   </div>
                 </div>
               </div>

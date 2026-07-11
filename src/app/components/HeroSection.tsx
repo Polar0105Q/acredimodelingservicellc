@@ -16,12 +16,6 @@ const t = {
     sub: 'Premium remodeling solutions for homes and businesses with craftsmanship, innovation, and attention to detail.',
     cta1: 'Get Free Estimate',
     cta2: 'View Projects',
-    stat1: '18+',
-    stat1l: 'Years Experience',
-    stat2: '1,200+',
-    stat2l: 'Projects Done',
-    stat3: '98%',
-    stat3l: 'Satisfaction Rate',
     scroll: 'Scroll',
   },
   es: {
@@ -31,12 +25,6 @@ const t = {
     sub: 'Soluciones premium de remodelación para hogares y negocios con artesanía, innovación y atención al detalle.',
     cta1: 'Estimado Gratis',
     cta2: 'Ver Proyectos',
-    stat1: '18+',
-    stat1l: 'Años de Experiencia',
-    stat2: '1,200+',
-    stat2l: 'Proyectos Realizados',
-    stat3: '98%',
-    stat3l: 'Satisfacción',
     scroll: 'Desplazar',
   },
 };
@@ -68,7 +56,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
       className="relative w-full min-h-[100svh] overflow-hidden flex flex-col justify-end pt-28 pb-16 md:pb-16 lg:pb-20 noise-overlay"
     >
       {/* Background Image — cinematic entrance */}
-      <div className="absolute inset-0 z-0 bg-foreground">
+      <div className="absolute inset-0 z-0 bg-[var(--brand-ink)]">
         <AppImage
           src="https://img.rocket.new/generatedImages/rocket_gen_img_1f651b492-1772835299818.png"
           alt="Luxury kitchen remodel with dark cabinetry, marble countertops, and dramatic pendant lighting in a modern open-plan space"
@@ -140,24 +128,6 @@ export default function HeroSection({ lang }: HeroSectionProps) {
               <p className="text-sm sm:text-base md:text-lg text-white/80 font-light leading-relaxed mb-6 md:mb-8">
                 {tx.sub}
               </p>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-3 sm:gap-4 border-t border-white/15 pt-5 md:pt-6 mb-6 md:mb-8">
-                {[
-                  { val: tx.stat1, label: tx.stat1l },
-                  { val: tx.stat2, label: tx.stat2l },
-                  { val: tx.stat3, label: tx.stat3l },
-                ].map((stat) => (
-                  <div key={stat.label}>
-                    <span className="block text-xl md:text-2xl font-display font-bold text-accent">
-                      {stat.val}
-                    </span>
-                    <span className="block text-[0.62rem] sm:text-xs uppercase tracking-wider text-white/40 mt-0.5">
-                      {stat.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-3">
