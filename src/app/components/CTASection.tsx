@@ -58,16 +58,18 @@ export default function CTASection({ lang }: CTASectionProps) {
     >
       <div className="max-w-5xl mx-auto relative">
         {/* Background card */}
-        <div className="relative rounded-3xl md:rounded-[2.5rem] overflow-hidden min-h-[420px] md:min-h-[400px] flex items-center">
+        <div className="relative rounded-3xl md:rounded-[2.5rem] overflow-hidden min-h-[420px] md:min-h-[400px] flex items-center bg-foreground">
           {/* Background image */}
-          <AppImage
-            src="https://img.rocket.new/generatedImages/rocket_gen_img_12253e59e-1772950411886.png"
-            alt="Beautifully renovated living room with warm lighting, high ceilings, and modern furniture in a luxury home"
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 1280px) 100vw, 80rem"
-            quality={75}
-          />
+          <div className="absolute inset-0">
+            <AppImage
+              src="https://img.rocket.new/generatedImages/rocket_gen_img_12253e59e-1772950411886.png"
+              alt="Beautifully renovated living room with warm lighting, high ceilings, and modern furniture in a luxury home"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1280px) 100vw, 80rem"
+              quality={75}
+            />
+          </div>
 
           {/* Strong dark scrim for white text */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/72 to-black/55" />
