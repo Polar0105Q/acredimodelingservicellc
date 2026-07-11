@@ -138,7 +138,7 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
                   featured
                     ? 'lg:col-span-2 bg-primary text-primary-foreground min-h-[260px] md:min-h-[320px]'
                     : dark
-                      ? 'lg:col-span-2 bg-[var(--brand-ink)] text-white min-h-[240px] md:min-h-[280px]'
+                      ? 'lg:col-span-2 bg-card border border-border min-h-[240px] md:min-h-[280px] hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5'
                       : accent
                         ? 'bg-accent/5 border border-accent/20 min-h-[240px] md:min-h-[280px] hover:bg-accent/10 hover:shadow-xl'
                         : 'bg-card border border-border min-h-[240px] md:min-h-[280px] hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5'
@@ -154,8 +154,8 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
 
                 {dark && (
                   <>
-                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-ink)] to-zinc-800" />
-                    <div className="absolute top-0 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+                    <div className="absolute inset-0 bg-primary/5" />
+                    <div className="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
                   </>
                 )}
 
@@ -166,7 +166,7 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
                         featured
                           ? 'w-14 h-14 bg-white/10'
                           : dark
-                            ? 'w-12 h-12 bg-white/10'
+                            ? 'w-12 h-12 bg-primary/10'
                             : accent
                               ? 'w-12 h-12 bg-accent/20'
                               : 'w-12 h-12 bg-primary/10 group-hover:bg-primary'
@@ -177,11 +177,13 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
                         size={featured ? 28 : 24}
                         variant="outline"
                         className={
-                          featured || dark
+                          featured
                             ? 'text-accent'
-                            : accent
-                              ? 'text-accent-foreground'
-                              : 'text-primary group-hover:text-primary-foreground'
+                            : dark
+                              ? 'text-primary'
+                              : accent
+                                ? 'text-accent-foreground'
+                                : 'text-primary group-hover:text-primary-foreground'
                         }
                       />
                     </div>
@@ -206,7 +208,7 @@ export default function ServicesSection({ lang }: ServicesSectionProps) {
                         featured
                           ? 'text-primary-foreground/70'
                           : dark
-                            ? 'text-white/65'
+                            ? 'text-muted-foreground'
                             : 'text-muted-foreground'
                       }`}
                     >

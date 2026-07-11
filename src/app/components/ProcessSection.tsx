@@ -122,7 +122,7 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
     <section
       id="process"
       ref={sectionRef}
-      className="py-16 md:py-24 lg:py-32 bg-[var(--brand-ink)] text-white relative overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 bg-background text-foreground relative overflow-hidden"
     >
       <div className="absolute top-1/4 left-0 w-96 h-96 blob-primary animate-blob pointer-events-none opacity-20" />
 
@@ -131,8 +131,8 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
           <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-3 block">
             {tx.label}
           </span>
-          <h2 className="text-section font-display font-bold text-white mb-4">{tx.heading}</h2>
-          <p className="text-base md:text-lg text-white/60 leading-relaxed">{tx.sub}</p>
+          <h2 className="text-section font-display font-bold text-foreground mb-4">{tx.heading}</h2>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{tx.sub}</p>
         </div>
 
         {/* Steps — horizontal on desktop, vertical on mobile */}
@@ -148,49 +148,49 @@ export default function ProcessSection({ lang }: ProcessSectionProps) {
                 className={`relative z-10 p-5 md:p-6 rounded-2xl border transition-all duration-300 ${
                   i === 0
                     ? 'bg-primary border-primary shadow-xl shadow-primary/30'
-                    : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
+                    : 'bg-card border-border hover:border-primary/30 hover:bg-primary/5'
                 }`}
               >
                 {/* Number */}
                 <div className="flex items-center justify-between mb-4">
                   <span
                     className={`text-xs font-mono font-bold tracking-widest ${
-                      i === 0 ? 'text-accent' : 'text-white/30'
+                      i === 0 ? 'text-accent' : 'text-muted-foreground'
                     }`}
                   >
                     {step.num}
                   </span>
                   <div
                     className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                      i === 0 ? 'bg-white/10' : 'bg-white/5'
+                      i === 0 ? 'bg-white/10' : 'bg-primary/10'
                     }`}
                   >
                     <Icon
                       name={step.icon as 'ChatBubbleLeftRightIcon'}
                       size={20}
                       variant="outline"
-                      className={i === 0 ? 'text-accent' : 'text-white/50'}
+                      className={i === 0 ? 'text-accent' : 'text-primary'}
                     />
                   </div>
                 </div>
 
                 <h3
                   className={`text-base font-display font-bold mb-2 ${
-                    i === 0 ? 'text-white' : 'text-white/80'
+                    i === 0 ? 'text-white' : 'text-foreground'
                   }`}
                 >
                   {step.title}
                 </h3>
                 <p
                   className={`text-xs leading-relaxed ${
-                    i === 0 ? 'text-white/80' : 'text-white/40'
+                    i === 0 ? 'text-white/80' : 'text-muted-foreground'
                   }`}
                 >
                   {step.desc}
                 </p>
                 <div
                   className={`mt-4 flex items-center gap-1.5 text-xs font-medium ${
-                    i === 0 ? 'text-accent' : 'text-white/30'
+                    i === 0 ? 'text-accent' : 'text-muted-foreground'
                   }`}
                 >
                   <Icon name="ClockIcon" size={12} variant="outline" />
